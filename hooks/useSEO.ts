@@ -6,6 +6,7 @@
 // ==========================================================================
 
 import { useEffect } from "react";
+import { BRAND_IMAGES } from "@/lib/brandImages";
 
 // Default OG image — brand truck livery used as fallback for all pages
 export const DEFAULT_OG_IMAGE =
@@ -118,7 +119,7 @@ export const MOVING_COMPANY_SCHEMA = {
   "@type": ["MovingCompany", "LocalBusiness"],
   name: "On The Go Moving & Storage",
   url: "https://onthegomoving.com",
-  logo: "https://onthegomoving.com/wp-content/uploads/2021/01/on-the-go-moving-logo.png",
+  logo: BRAND_IMAGES.logo,
   image: DEFAULT_OG_IMAGE,
   telephone: "+14257618500",
   email: "booking@onthegomoving.com",

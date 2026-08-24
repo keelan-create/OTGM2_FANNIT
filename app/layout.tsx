@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { BRAND_IMAGES } from "@/lib/brandImages";
 
 // ── Server-side sitewide JSON-LD ──────────────────────────────────────────────
 // Rendered directly into the static HTML on every page so Googlebot sees the
@@ -11,7 +12,7 @@ const organizationSchema = {
   "@id": "https://onthegomoving.com/#organization",
   name: "On The Go Moving & Storage",
   url: "https://onthegomoving.com",
-  logo: "https://onthegomoving.com/wp-content/uploads/2021/01/on-the-go-moving-logo.png",
+  logo: BRAND_IMAGES.logo,
   foundingDate: "2009",
   founder: {
     "@type": "Person",
@@ -45,7 +46,7 @@ const localBusinessSchema = {
   "@id": "https://onthegomoving.com/#local-business",
   name: "On The Go Moving & Storage",
   url: "https://onthegomoving.com",
-  logo: "https://onthegomoving.com/wp-content/uploads/2021/01/on-the-go-moving-logo.png",
+  logo: BRAND_IMAGES.logo,
   image: "https://onthegomoving.com/wp-content/uploads/2021/01/on-the-go-moving-storage-truck.jpg",
   telephone: "+14257618500",
   email: "booking@onthegomoving.com",
@@ -103,6 +104,33 @@ const localBusinessSchema = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Long Distance Moving" } },
     ],
   },
+};
+
+// No on-site search endpoint exists, so WebSite intentionally omits potentialAction/SearchAction.
+// hasPart is limited to /faq/ and /blog/ — the only cross-site index pages confirmed to exist
+// as real routes (app/(main)/faq/page.tsx, app/(main)/blog/page.tsx).
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://onthegomoving.com/#website",
+  name: "On The Go Moving & Storage",
+  url: "https://onthegomoving.com",
+  publisher: { "@id": "https://onthegomoving.com/#organization" },
+  inLanguage: "en-US",
+  hasPart: [
+    {
+      "@type": "WebPage",
+      "@id": "https://onthegomoving.com/faq/#webpage",
+      name: "Moving FAQ | Common Questions Answered",
+      url: "https://onthegomoving.com/faq/",
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://onthegomoving.com/blog/#webpage",
+      name: "Moving Tips & Resources Blog",
+      url: "https://onthegomoving.com/blog/",
+    },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -205,11 +233,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        {/* Sitewide Organization + LocalBusiness JSON-LD */}
+        {/* Sitewide Organization + LocalBusiness + WebSite JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationSchema, localBusinessSchema]),
+            __html: JSON.stringify([organizationSchema, localBusinessSchema, websiteSchema]),
           }}
         />
       </head>
