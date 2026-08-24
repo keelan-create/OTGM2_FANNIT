@@ -18,6 +18,16 @@
 
 import crypto from "crypto";
 import mysql from "mysql2/promise";
+import seattleHouseDestinationModule from "../../lib/seattleHouseDestinations.js";
+import supermoveResponseModule from "../../lib/supermoveResponse.js";
+
+const {
+  applySeattleHouseDestination,
+  getSeattleHouseMoveTypeLabel,
+  isSeattleHouseDestinationRequest,
+  isValidSeattleHouseMoveSelection,
+} = seattleHouseDestinationModule;
+const { getSupermoveValidationError } = supermoveResponseModule;
 
 // ── FB Pixel ID (public, safe to hardcode) ──────────────────────────────────
 const FB_PIXEL_ID = "129153980771695";
@@ -111,7 +121,9 @@ function buildSupermovePayload(lead) {
 
   const noteLines = [
     lead.wantsStorage ? "Interested in storage" : "",
+    lead.partnerTowerName ? `Seattle House service: ${getSeattleHouseMoveTypeLabel(lead.moveType)}` : "",
     lead.squareFeet ? `Square feet: ${lead.squareFeet}` : "",
+    lead.partnerTowerName ? `Seattle House tower: ${lead.partnerTowerName}` : "",
     lead.sourceLabel ? `Source: ${lead.sourceLabel}` : "",
   ].filter(Boolean);
 
@@ -134,16 +146,17 @@ function buildSupermovePayload(lead) {
         date: lead.moveDate ?? "",
         locations: [
           ...(lead.fromZip ? [{ address: lead.fromZip }] : []),
-          ...(lead.toZip ? [{ address: lead.toZip }] : []),
+          ...(lead.toAddress || lead.toZip ? [{ address: lead.toAddress || lead.toZip }] : []),
         ],
         note_from_customer: noteLines.join(" | "),
       },
     ],
     referral_source: "Custom Website via A Supermove-Managed Integration",
-    tags: [
+    tags: Array.from(new Set([
       "WEBSITE_LEAD",
+      ...(lead.supermoveTags || []),
       ...(lead.sourceLabel === "landing-social-residential-movers" ? ["SOCIAL_MEDIA_LEAD"] : []),
-    ],
+    ])),
     ...(projectSize ? { values: { PROJECT_SIZE: projectSize } } : {}),
   };
 }
@@ -211,6 +224,23 @@ export const handler = async (event) => {
   const rawPhone = (lead.phone || "").replace(/\D/g, "");
   const cleanPhone = rawPhone.length === 11 && rawPhone.startsWith("1") ? rawPhone.slice(1) : rawPhone;
   lead.phone = cleanPhone;
+
+  if (isSeattleHouseDestinationRequest(lead.partnerDestination)) {
+    if (!isValidSeattleHouseMoveSelection(lead.moveType, lead.moveSize)) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Please choose a valid Seattle House move type and apartment size." }),
+      };
+    }
+    const mappedLead = applySeattleHouseDestination(lead);
+    if (!mappedLead) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Please choose a valid Seattle House tower." }),
+      };
+    }
+    lead = mappedLead;
+  }
 
   if (!lead.fullName || !lead.phone || !lead.email) {
     return {
@@ -298,8 +328,9 @@ export const handler = async (event) => {
   } else {
     const smResponse = supermoveResult.value;
     const smText = await smResponse.text().catch(() => "");
-    if (!smResponse.ok) {
-      console.error("[submit-lead] SuperMove error:", smResponse.status, smText);
+    const validationError = getSupermoveValidationError(smText);
+    if (!smResponse.ok || validationError) {
+      console.error("[submit-lead] SuperMove error:", smResponse.status, validationError || smText);
       webhookStatus = "failed";
     }
   }

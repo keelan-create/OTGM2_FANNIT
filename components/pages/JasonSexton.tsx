@@ -52,8 +52,8 @@ const CREDENTIALS = [
   },
   {
     icon: Star,
-    title: "4.8-Star Google Rating, 1,562+ Reviews",
-    desc: "Jason's commitment to flat-rate pricing, on-time performance, and professional crews has earned On The Go Moving a 4.8-star average across more than 1,562 verified Google reviews.",
+    title: "4.8-Star Google Rating, 393 Reviews",
+    desc: "Jason's commitment to flat-rate pricing, on-time performance, and professional crews has earned On The Go Moving a 4.8-star average across more than 393 verified Google reviews.",
   },
   {
     icon: Award,
@@ -96,7 +96,7 @@ const TIMELINE = [
   {
     year: "2024",
     event:
-      "Over 25,000 moves completed. 1,562 five-star Google reviews and counting. Jason remains active in daily operations, customer escalations, and team development.",
+      "Over 25,000 moves completed. 393 five-star Google reviews and counting. Jason remains active in daily operations, customer escalations, and team development.",
   },
 ];
 
@@ -119,7 +119,7 @@ const FAQS = [
   },
   {
     q: "How can I contact Jason Sexton or On The Go Moving?",
-    a: "You can reach On The Go Moving & Storage by phone at (425) 761-8500 or by email at booking@onthegomoving.com. The office is located at 14920 NE 95th St, Redmond, WA 98052.",
+    a: "You can reach On The Go Moving & Storage by phone at (425) 761-8500 or by email at booking@onthegomoving.com. The office is located at 16625 Redmond Way #M365, Redmond, WA 98052.",
   },
 ];
 
@@ -151,7 +151,7 @@ export default function JasonSexton() {
           telephone: "+14257618500",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "14920 NE 95th St",
+            streetAddress: "16625 Redmond Way #M365",
             addressLocality: "Redmond",
             addressRegion: "WA",
             postalCode: "98052",

@@ -207,7 +207,7 @@ export default function ResidentialMoving() {
           name: "On The Go Moving & Storage",
           telephone: "+14257618500",
           address: { "@type": "PostalAddress", addressLocality: "Redmond", addressRegion: "WA", postalCode: "98052", addressCountry: "US" },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "1562" },
+          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "393" },
         },
         areaServed: { "@type": "GeoCircle", geoMidpoint: { "@type": "GeoCoordinates", latitude: 47.6740, longitude: -122.1215 }, geoRadius: "29000" },
         offers: { "@type": "Offer", priceSpecification: { "@type": "UnitPriceSpecification", price: "100", priceCurrency: "USD", unitText: "per hour" } },
@@ -274,7 +274,7 @@ export default function ResidentialMoving() {
                   {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="#fbc319" color="#fbc319" />)}
                 </div>
                 <span className="text-white font-semibold">4.8</span>
-                <span className="text-white/50">(1,562 reviews)</span>
+                <span className="text-white/50">(393 reviews)</span>
                 <span className="text-white/30 mx-1">·</span>
                 <Shield size={12} className="text-[#75aa11] flex-shrink-0" />
                 <span>Licensed &amp; Insured</span>
@@ -309,7 +309,7 @@ export default function ResidentialMoving() {
         <div className="container">
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
             {[
-              { icon: Star, text: "4.8 Stars on Google, 1,562 Reviews", color: "text-amber-500" },
+              { icon: Star, text: "4.8 Stars on Google, 393 Reviews", color: "text-amber-500" },
               { icon: Shield, text: "WA Licensed HG-064180 · USDOT# 2120054", color: "text-brand-green" },
               { icon: Clock, text: "Serving Greater Seattle Since 2009", color: "text-brand-green" },
               { icon: DollarSign, text: "Flat-Rate Pricing, No Hidden Fees", color: "text-brand-green" },

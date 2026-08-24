@@ -50,7 +50,7 @@ const BENEFITS = [
     icon: Star,
     color: "bg-yellow-100 text-yellow-600",
     title: "5-Star Service for Your Clients",
-    desc: "Your reputation is on the line with every referral. Our 4.8-star rating across 1,562+ reviews means your clients will thank you.",
+    desc: "Your reputation is on the line with every referral. Our 4.8-star rating across 393 reviews means your clients will thank you.",
   },
   {
     icon: Users,
@@ -126,7 +126,7 @@ export default function RealEstateAgents() {
               <div className="flex items-center gap-1">
                 {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-brand-gold text-brand-gold" />)}
                 <span className="text-white text-sm font-bold ml-1">4.8</span>
-                <span className="text-white/60 text-xs ml-1">(1,562 reviews)</span>
+                <span className="text-white/60 text-xs ml-1">(393 reviews)</span>
               </div>
               <span className="text-white/30">|</span>
               <div className="flex items-center gap-1.5">
@@ -194,7 +194,7 @@ export default function RealEstateAgents() {
                 {[
                   ["1", "Sign Up", "Contact us to set up your referral account. Takes less than 5 minutes. You'll get a dedicated account manager and your unique referral code."],
                   ["2", "Refer Your Clients", "When a client needs moving services, refer them to us by phone, email, or your unique referral link. We take it from there."],
-                  ["3", "We Deliver 5-Star Service", "Our crews provide the same white-glove service to your referred clients that has earned us 1,562+ 5-star reviews."],
+                  ["3", "We Deliver 5-Star Service", "Our crews provide the same white-glove service to your referred clients that has earned us 393 5-star reviews."],
                   ["4", "You Earn a Referral Fee", "After each completed move, we process your referral fee promptly. No complicated tracking, we handle everything."],
                 ].map(([num, title, desc]) => (
                   <div key={num} className="flex gap-5">

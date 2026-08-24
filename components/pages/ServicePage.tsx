@@ -903,7 +903,7 @@ export default function ServicePage({ slug }: ServicePageProps) {
           name: "On The Go Moving & Storage",
           telephone: "+14257618500",
           address: { "@type": "PostalAddress", addressLocality: "Redmond", addressRegion: "WA", postalCode: "98052", addressCountry: "US" },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "1562" },
+          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "393" },
         },
         areaServed: { "@type": "GeoCircle", geoMidpoint: { "@type": "GeoCoordinates", latitude: 47.6740, longitude: -122.1215 }, geoRadius: "29000" },
       },
@@ -982,7 +982,7 @@ export default function ServicePage({ slug }: ServicePageProps) {
                   {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="#fbc319" color="#fbc319" />)}
                 </div>
                 <span className="text-white font-semibold">4.8</span>
-                <span className="text-white/50">(1,562 reviews)</span>
+                <span className="text-white/50">(393 reviews)</span>
                 <span className="text-white/30 mx-1">·</span>
                 <Shield size={12} className="text-[#75aa11] flex-shrink-0" />
                 <span>Licensed &amp; Insured</span>
@@ -1017,7 +1017,7 @@ export default function ServicePage({ slug }: ServicePageProps) {
         <div className="container">
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
             {[
-              { icon: Star, text: "4.8 Stars on Google, 1,562 Reviews", color: "text-amber-500" },
+              { icon: Star, text: "4.8 Stars on Google, 393 Reviews", color: "text-amber-500" },
               { icon: Shield, text: "WA Licensed HG-064180 · USDOT# 2120054", color: "text-brand-green" },
               { icon: Clock, text: "Serving Greater Seattle Since 2009", color: "text-brand-green" },
               { icon: DollarSign, text: "Flat-Rate Pricing, No Hidden Fees", color: "text-brand-green" },
@@ -1370,6 +1370,11 @@ export default function ServicePage({ slug }: ServicePageProps) {
         };
         const serviceKey = slugToKey[slug];
         if (!serviceKey) return null;
+        // "corporate-relocation" and "labor-only" are not valid serviceKeys for
+        // /{city}-movers/{service}/ (no such sub-page was ever built, for any
+        // city) — render every city in this grid as plain text instead of a
+        // broken link on these two hub pages.
+        const isUnbuiltServiceKey = serviceKey === "corporate-relocation" || serviceKey === "labor-only";
         const cityLinks = [
           { city: "Seattle", slug: "seattle" },
           { city: "Bellevue", slug: "bellevue" },
@@ -1407,14 +1412,24 @@ export default function ServicePage({ slug }: ServicePageProps) {
                 {data.title} in Greater Seattle
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-                {unique.map(c => (
-                  <a key={c.slug} href={`/${c.slug}-movers/${serviceKey}/`}>
-                    <span className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 bg-white hover:border-brand-forest hover:bg-brand-forest/5 text-gray-700 hover:text-brand-forest text-sm font-medium transition-all cursor-pointer">
-                      <MapPin size={12} className="text-brand-forest flex-shrink-0" />
-                      {c.city}
-                    </span>
-                  </a>
-                ))}
+                {unique.map(c => {
+                  if (isUnbuiltServiceKey) {
+                    return (
+                      <span key={c.slug} className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 bg-white text-gray-700 text-sm font-medium">
+                        <MapPin size={12} className="text-brand-forest flex-shrink-0" />
+                        {c.city}
+                      </span>
+                    );
+                  }
+                  return (
+                    <a key={c.slug} href={`/${c.slug}-movers/${serviceKey}/`}>
+                      <span className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 bg-white hover:border-brand-forest hover:bg-brand-forest/5 text-gray-700 hover:text-brand-forest text-sm font-medium transition-all cursor-pointer">
+                        <MapPin size={12} className="text-brand-forest flex-shrink-0" />
+                        {c.city}
+                      </span>
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </section>

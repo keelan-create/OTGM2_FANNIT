@@ -10,10 +10,10 @@ export const COMPANY = {
   phone: "(425) 761-8500",
   phoneHref: "tel:+14257618500",
   email: "booking@onthegomoving.com",
-  address: "14920 NE 95th St, Redmond, WA 98052",
+  address: "16625 Redmond Way #M365, Redmond, WA 98052",
   license: "HG-064180",
   usdot: "2120054",
-  googleReviewCount: 1562,
+  googleReviewCount: 393,
   googleRating: 4.8,
   founded: 2009,
   tagline: "Seattle's Most Trusted Movers",
@@ -311,7 +311,7 @@ export const TESTIMONIALS = [
 
 export const STATS = [
   { value: "15+", label: "Years in Business" },
-  { value: "1,562", label: "5-Star Google Reviews" },
+  { value: "393", label: "5-Star Google Reviews" },
   { value: "25,000+", label: "Successful Moves" },
   { value: "4.8★", label: "Average Rating" },
 ];
@@ -354,6 +354,11 @@ export const FAQS = [
     question: "What areas do you serve?",
     answer:
       "We serve the entire Greater Seattle area including Seattle, Bellevue, Redmond, Kirkland, Issaquah, Bothell, Renton, Shoreline, Sammamish, Woodinville, Kenmore, Mercer Island, Lynnwood, Everett, and surrounding communities.",
+  },
+  {
+    question: "Why are so many people moving out of Seattle?",
+    answer:
+      "Over the past few years, Seattle has seen a notable outflow of residents driven by a combination of economic and quality-of-life factors. Housing costs remain among the highest in the nation, with median home prices consistently pricing out middle-income families and young professionals. The city's high cost of living more broadly — from groceries to transportation — has pushed many households to explore more affordable alternatives both within Washington State and in neighboring states like Idaho and Oregon. Additionally, some residents and businesses have cited concerns about public safety, changes in the urban environment, and the lingering effects of the COVID-19 pandemic, which fundamentally shifted how people think about where they want to live and work. Remote work has played an enormous role in this shift as well. With major tech employers in the region — including Amazon and Microsoft — adopting flexible or hybrid work policies, many employees no longer feel tethered to Seattle proper. This has accelerated moves to surrounding communities like Bellevue, Kirkland, Redmond, and Issaquah, as well as to more distant locations where housing dollars stretch considerably further. Interestingly, not all of this movement represents people leaving the Pacific Northwest altogether — a significant portion are simply relocating within Western Washington to find a better balance of affordability and lifestyle. For those navigating these transitions, working with experienced local movers who understand the Seattle and Eastside areas can make the process considerably less stressful. Whether someone is downsizing within the city, relocating a household to the suburbs, or moving a business to a different part of the region, having a team familiar with local neighborhoods, traffic patterns, and building requirements — from Capitol Hill high-rises to Eastside residential communities — can be a genuine advantage during what is already a complex life change.",
   },
   {
     question: "What are red flags with moving companies?",

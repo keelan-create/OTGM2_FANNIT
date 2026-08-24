@@ -72,7 +72,7 @@ export default function Locations() {
             {[
               { icon: Shield, text: "Licensed HG-064180 · USDOT# 2120054" },
               { icon: Clock, text: "Serving Greater Seattle Since 2009" },
-              { icon: CheckCircle, text: "4.8 Stars · 1,562 Google Reviews" },
+              { icon: CheckCircle, text: "4.8 Stars · 393 Google Reviews" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-green-200">
                 <item.icon className="w-4 h-4 text-brand-green-light" />
@@ -130,7 +130,7 @@ export default function Locations() {
           <div className="grid sm:grid-cols-3 gap-6">
             {[
               { stat: "18 mi", label: "Maximum distance from our Redmond warehouse to any city we serve" },
-              { stat: "1,562", label: "Verified 5-star Google reviews from local customers" },
+              { stat: "393", label: "Verified 5-star Google reviews from local customers" },
               { stat: "15+ yrs", label: "Serving the Greater Seattle Eastside since 2009" },
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 rounded-xl p-6 border border-gray-100">

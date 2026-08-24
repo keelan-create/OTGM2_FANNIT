@@ -43,10 +43,22 @@ const KEYWORD_MAP: Array<{ pattern: RegExp; url: string; label: string }> = [
 const MAX_LINKS_PER_POST = 6;
 
 /**
+ * Returns true if the position `index` in `text` is inside an existing <a>...</a> tag.
+ * Prevents the auto-linker from creating nested anchors over manually-written links.
+ */
+function isInsideAnchor(text: string, index: number): boolean {
+  const before = text.slice(0, index);
+  const lastOpenTag = before.lastIndexOf('<a ');
+  const lastCloseTag = before.lastIndexOf('</a>');
+  return lastOpenTag > lastCloseTag;
+}
+
+/**
  * Injects contextual internal links into a plain-text string.
  * - Tracks which URLs have already been linked (first-occurrence-only per post)
  * - Respects the MAX_LINKS_PER_POST cap
  * - Skips the target URL if it matches the post's own relatedService page
+ * - Skips matches that are already inside an existing <a> tag (avoids nested anchors)
  * - Returns an HTML string safe to render via dangerouslySetInnerHTML
  */
 function linkifyContent(
@@ -71,8 +83,11 @@ function linkifyContent(
     const matchedText = match[0];
     const startInOriginal = match.index;
 
+    // Skip if this match is already inside an existing <a> tag — avoids nested anchors
+    if (isInsideAnchor(text, startInOriginal)) continue;
+
     // Build the replacement anchor
-    const anchor = `<a href="${url}" class="text-[#75aa11] font-semibold hover:underline">${matchedText}</a>`;
+    const anchor = `<a href="${url}">${matchedText}</a>`;
 
     // Apply replacement to result string at the correct offset position
     const adjustedStart = startInOriginal + offset;
@@ -392,10 +407,10 @@ export default function BlogPost({ slug: slugProp }: { slug?: string }) {
                         style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
                       >
                         {section.heading}
-                      </h3>
-                    )}
-                    <p
-                      className="text-gray-600 leading-relaxed"
+                    </h3>
+                  )}
+                    <div
+                      className="text-gray-600 leading-relaxed space-y-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1.5 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:space-y-1.5 [&_li]:leading-relaxed [&_strong]:font-semibold [&_strong]:text-gray-800 [&_a]:text-[#4b7f14] [&_a]:font-semibold [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-2 [&_a:hover]:text-[#1e3a0f] [&_a:hover]:decoration-2 [&_a:focus-visible]:outline [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-2 [&_a:focus-visible]:outline-[#1e3a0f] [&_a_strong]:text-[#4b7f14] [&_a:hover_strong]:text-[#1e3a0f]"
                       dangerouslySetInnerHTML={{ __html: linkifyContent(section.body, linkedUrls, skipUrl) }}
                     />
                   </div>

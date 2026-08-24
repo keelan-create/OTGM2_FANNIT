@@ -241,7 +241,7 @@ export default function Services() {
             {[
               { icon: Shield, text: "Licensed HG-064180 · USDOT# 2120054" },
               { icon: Clock, text: "Serving Greater Seattle Since 2009" },
-              { icon: CheckCircle, text: "4.8 Stars · 1,562 Google Reviews" },
+              { icon: CheckCircle, text: "4.8 Stars · 393 Google Reviews" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-green-200">
                 <item.icon className="w-4 h-4 text-brand-green-light" />
@@ -322,7 +322,7 @@ export default function Services() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { stat: "25,000+", label: "Successful Moves", desc: "Residential, commercial, and specialty moves completed across Greater Seattle." },
-              { stat: "4.8★", label: "Google Rating", desc: "1,562 verified reviews from real customers in Seattle, Bellevue, Redmond, and beyond." },
+              { stat: "4.8★", label: "Google Rating", desc: "393 verified reviews from real customers in Seattle, Bellevue, Redmond, and beyond." },
               { stat: "15+ yrs", label: "In Business", desc: "Locally owned and operated since 2009. We're part of the community we serve." },
               { stat: "Secure", label: "Vault Storage", desc: "Private climate-controlled vault storage at our Redmond facility, managed by our team." },
             ].map((item, i) => (
@@ -344,7 +344,7 @@ export default function Services() {
               {[1,2,3,4,5].map(i => <Star key={i} size={20} fill="#fbc319" color="#fbc319" />)}
             </div>
             <p className="text-brand-forest font-bold text-lg">
-              4.8 out of 5 · 1,562 Google Reviews
+              4.8 out of 5 · 393 Google Reviews
             </p>
             <a
               href="https://www.google.com/maps/place/On+The+Go+Moving+%26+Storage"

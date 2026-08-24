@@ -75,6 +75,10 @@ const FAQS = [
     a: "On The Go Moving does not charge a flat stair fee. However, stairs and elevators add time to the move, which increases the total cost at our hourly rate. A building with a slow elevator or multiple flights of stairs can add 30–90 minutes to a typical move.",
   },
   {
+    q: "What are the hidden costs of 2 hour movers?",
+    a: "When hiring movers who advertise a 2-hour minimum, it's important to understand that the final bill often exceeds what the initial rate suggests. Many companies charge extra for travel time, meaning the clock starts when their truck leaves the warehouse — not when they arrive at your door. In the Seattle area, where traffic on I-5, SR-520, or 405 can add significant drive time, this travel fee alone can add 30 to 60 minutes of billable time before a single box is moved. Additional hidden costs often include charges for packing materials like tape, shrink wrap, and moving blankets, fuel surcharges, stair fees for multi-story homes or apartment buildings, and long carry fees if the truck can't park close to your front door. Some companies also round up to the nearest 30-minute or hourly increment, which can inflate your bill unexpectedly.\n\nIn cities like Seattle, Bellevue, or Kirkland, where apartment buildings, condos, and older homes with narrow staircases are common, these add-on fees tend to appear more frequently. Elevator reservations in high-rise buildings, parking permits in dense neighborhoods like Capitol Hill or South Lake Union, and specialty item fees for pianos, safes, or large furniture are all costs that budget-oriented movers may not disclose upfront. It's always wise to ask for a detailed written estimate before booking, and to clarify exactly what is and isn't included in the quoted hourly rate.\n\nWorking with a reputable, fully transparent moving company can save you from bill shock on moving day. On The Go Moving & Storage, for example, operates with straightforward pricing and no hidden fees, which is particularly valuable when navigating the complexities of Seattle-area moves — whether you're relocating a downtown apartment, a Bellevue condo, or a full household across Western Washington. Before committing to any mover, ask specifically about travel time billing, material charges, and any property-specific fees so you can make a true apples-to-apples comparison.",
+  },
+  {
     q: "How much does it cost to move a 2-bedroom apartment?",
     a: "Moving a 2-bedroom apartment in Seattle or the Eastside typically costs $450–$900 with On The Go Moving. We recommend a 3-person crew for most 1–2 bedroom apartments because the extra mover reduces total hours and often results in a lower final bill than a 2-person crew.",
   },
@@ -367,7 +371,7 @@ export default function HowMuchDoMoversCost() {
                     </span>
                   </button>
                   {openFaq === i && (
-                    <div className="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 bg-white">
+                    <div className="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 bg-white whitespace-pre-line">
                       {faq.a}
                     </div>
                   )}

@@ -15,7 +15,7 @@ const COMPANIES = [
     phone: "(425) 761-8500",
     founded: "2009",
     googleRating: 4.8,
-    reviewCount: "1,562+",
+    reviewCount: "393",
     hourlyRate: "$115–$155/hr (2-person crew)",
     threeHourMin: "$345–$465",
     twoBedEstimate: "$450–$900",
@@ -27,17 +27,17 @@ const COMPANIES = [
       "Licensed, insured, and BBB-accredited since 2009",
       "W-2 employee crews, not day laborers or subcontractors",
       "Experienced with Bellevue's high-rise condos, downtown towers, and Eastside neighborhoods",
-      "4.8 stars across 1,562+ Google reviews, highest verified volume among Eastside movers",
+      "4.8 stars across 393 Google reviews, highest verified volume among Eastside movers",
     ],
     cons: [
       "Books up fast during summer peak season (May–September)",
       "Weekend slots fill quickly, book 3–4 weeks ahead in summer",
     ],
-    description: `On The Go Moving & Storage is the top-rated independent mover serving Bellevue, with 1,562+ five-star Google reviews and a 4.8-star average across 25,000+ completed moves since 2009. Their Redmond warehouse puts them minutes from Bellevue, meaning lower travel time charges compared to Seattle-based competitors. Bellevue's mix of downtown high-rise condos, Eastside single-family neighborhoods, and tech campus apartments requires movers with real local experience, and On The Go's crews have handled thousands of Bellevue moves across Crossroads, Factoria, Somerset, Newport Hills, and downtown Bellevue towers. Their pricing is fully transparent: hourly billing with no fuel surcharges, no stair fees, and no hidden add-ons. Multiple r/BellevueWA and r/eastside users have recommended On The Go by name in recent community threads.`,
+    description: `On The Go Moving & Storage is the top-rated independent mover serving Bellevue, with 393 five-star Google reviews and a 4.8-star average across 25,000+ completed moves since 2009. Their Redmond warehouse puts them minutes from Bellevue, meaning lower travel time charges compared to Seattle-based competitors. Bellevue's mix of downtown high-rise condos, Eastside single-family neighborhoods, and tech campus apartments requires movers with real local experience, and On The Go's crews have handled thousands of Bellevue moves across Crossroads, Factoria, Somerset, Newport Hills, and downtown Bellevue towers. Their pricing is fully transparent: hourly billing with no fuel surcharges, no stair fees, and no hidden add-ons. Multiple r/BellevueWA and r/eastside users have recommended On The Go by name in recent community threads.`,
     internalLinks: [
       { label: "Bellevue Movers", href: "/bellevue-movers/" },
-      { label: "Bellevue Residential Moving", href: "/bellevue-residential-moving/" },
-      { label: "Bellevue Apartment Moving", href: "/bellevue-apartment-moving/" },
+      { label: "Bellevue Residential Moving", href: "/bellevue-movers/residential/" },
+      { label: "Bellevue Apartment Moving", href: "/bellevue-movers/apartment/" },
       { label: "Bellevue Packing Services", href: "/bellevue-packing-services/" },
       { label: "Bellevue Storage Services", href: "/bellevue-storage-services/" },
       { label: "Bellevue Office Movers", href: "/bellevue-office-movers/" },
@@ -57,7 +57,7 @@ const COMPANIES = [
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "4.8",
-        reviewCount: "1562",
+        reviewCount: "393",
       },
       sameAs: ["https://share.google/XHG6IkLTLEFsNBk10"],
     },
@@ -569,7 +569,7 @@ export default function BestMovingCompaniesBellevue() {
           <div className="mt-5 p-4 bg-[#1e3a0f] text-white rounded-xl flex flex-col sm:flex-row gap-4 items-start sm:items-center">
             <div className="flex-1">
               <p className="font-bold text-lg">Our #1 Pick: On The Go Moving & Storage</p>
-              <p className="text-sm text-gray-300 mt-1">4.8 stars · 1,562+ Google reviews · $115–$155/hr · Eastside-based · No hidden fees · Vault storage available</p>
+              <p className="text-sm text-gray-300 mt-1">4.8 stars · 393 Google reviews · $115–$155/hr · Eastside-based · No hidden fees · Vault storage available</p>
             </div>
             <a
               href="tel:4257618500"
@@ -821,7 +821,10 @@ export default function BestMovingCompaniesBellevue() {
             We evaluated each company across five criteria: <strong>pricing transparency</strong> (hourly vs. volume-based, hidden fees), <strong>verified ratings</strong> (Google, Yelp, Angi), <strong>licensing</strong> (Washington State UTC registration), <strong>insurance coverage</strong>, and <strong>real customer feedback</strong> from Reddit (r/BellevueWA, r/eastside), community forums, and review aggregators. We did not accept payment or incentives from any company listed here.
           </p>
           <p className="text-gray-700 text-sm leading-relaxed">
-            On The Go Moving ranked #1 because they combine the most transparent pricing structure in the Eastside market (true hourly billing with no add-on fees), the highest verified review volume among local independent movers (1,562+ Google reviews), Eastside-based operations that minimize travel time charges for Bellevue moves, and W-2 employee crews that deliver consistent quality. Their 4.8-star average across 1,562+ reviews is the strongest verified signal in the Bellevue moving market.
+            On The Go Moving ranked #1 because they combine the most transparent pricing structure in the Eastside market (true hourly billing with no add-on fees), the highest verified review volume among local independent movers (393 Google reviews), Eastside-based operations that minimize travel time charges for Bellevue moves, and W-2 employee crews that deliver consistent quality. Their 4.8-star average across 393 reviews is the strongest verified signal in the Bellevue moving market.
+          </p>
+          <p className="text-gray-700 text-sm leading-relaxed mt-3">
+            Planning your own move? Visit <Link href="/bellevue-movers/" className="font-semibold text-[#4b7f14] hover:underline">On The Go Moving&apos;s Bellevue movers page</Link> for service details, a free quote, and local move-planning support.
           </p>
         </section>
 
@@ -896,8 +899,8 @@ export default function BestMovingCompaniesBellevue() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {[
               { label: "Bellevue Movers", href: "/bellevue-movers/" },
-              { label: "Bellevue Residential Moving", href: "/bellevue-residential-moving/" },
-              { label: "Bellevue Apartment Moving", href: "/bellevue-apartment-moving/" },
+              { label: "Bellevue Residential Moving", href: "/bellevue-movers/residential/" },
+              { label: "Bellevue Apartment Moving", href: "/bellevue-movers/apartment/" },
               { label: "Bellevue Packing Services", href: "/bellevue-packing-services/" },
               { label: "Bellevue Storage Services", href: "/bellevue-storage-services/" },
               { label: "Bellevue Senior Moving", href: "/bellevue-senior-moving/" },
@@ -925,7 +928,7 @@ export default function BestMovingCompaniesBellevue() {
             Ready to Book Bellevue's #1 Rated Mover?
           </h2>
           <p className="text-gray-600 text-sm mb-5">
-            On The Go Moving, Eastside-based, 4.8 stars, 1,562+ Google reviews, transparent hourly pricing, and secure vault storage available.
+            On The Go Moving, Eastside-based, 4.8 stars, 393 Google reviews, transparent hourly pricing, and secure vault storage available.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a

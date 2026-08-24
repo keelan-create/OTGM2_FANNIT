@@ -82,11 +82,11 @@ export default function ContactUs() {
                           <div className="flex items-start justify-between gap-2">
                             <div>
                               <div className="font-bold text-gray-900 text-sm">Redmond <span className="text-[10px] font-semibold text-white bg-[#75aa11] rounded px-1.5 py-0.5 ml-1">HQ</span></div>
-                              <div className="text-sm text-gray-600 mt-0.5">14920 NE 95th St</div>
+                              <div className="text-sm text-gray-600 mt-0.5">16625 Redmond Way #M365</div>
                               <div className="text-sm text-gray-600">Redmond, WA 98052</div>
                             </div>
                             <a
-                              href="https://maps.google.com/?q=14920+NE+95th+St+Redmond+WA+98052"
+                              href="https://maps.google.com/?q=16625+Redmond+Way+%23M365+Redmond+WA+98052"
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-xs text-[#75aa11] hover:underline shrink-0 mt-0.5"

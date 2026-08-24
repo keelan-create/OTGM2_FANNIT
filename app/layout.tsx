@@ -36,7 +36,7 @@ const organizationSchema = {
     "https://share.google/wz8Px2cowaHkprOAM",
   ],
   description:
-    "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 1,562+ Google reviews.",
+    "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 393 Google reviews.",
 };
 
 const localBusinessSchema = {
@@ -65,7 +65,7 @@ const localBusinessSchema = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "1562",
+    reviewCount: "393",
     bestRating: "5",
     worstRating: "1",
   },
@@ -76,7 +76,7 @@ const localBusinessSchema = {
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Sunday"], opens: "07:00", closes: "19:00" },
   ],
   description:
-    "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 1,562+ Google reviews.",
+    "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 393 Google reviews.",
   sameAs: [
     "https://www.facebook.com/onthegomoving",
     "https://www.instagram.com/onthegomoving",

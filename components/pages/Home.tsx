@@ -318,7 +318,7 @@ export default function Home() {
                   { icon: <Archive size={15} />, text: "Secure vault storage" },
                   { icon: <Users size={15} />, text: "Background-checked crews" },
                   { icon: <Clock size={15} />, text: "On-time, every time" },
-                  { icon: <Award size={15} />, text: "4.8★ on Google, 1,562 reviews" },
+                  { icon: <Award size={15} />, text: "4.8★ on Google, 393 reviews" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-start gap-2.5 text-gray-700 text-sm">
                     <span className="shrink-0 mt-0.5 text-[#75aa11]">{item.icon}</span>

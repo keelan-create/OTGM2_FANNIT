@@ -148,7 +148,7 @@ export default function StagingProfessionals() {
                 <div className="flex items-center gap-1">
                   {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-brand-gold text-brand-gold" />)}
                   <span className="text-white text-sm font-bold ml-1">4.8</span>
-                  <span className="text-white/60 text-xs ml-1">(1,562 reviews)</span>
+                  <span className="text-white/60 text-xs ml-1">(393 reviews)</span>
                 </div>
                 <span className="text-white/30">|</span>
                 <div className="flex items-center gap-1.5">
@@ -213,7 +213,7 @@ export default function StagingProfessionals() {
         <div className="container">
           <div className="flex flex-wrap justify-center gap-6 lg:gap-10">
             {[
-              { icon: Star, text: "4.8★ Google Rating (1,562 reviews)" },
+              { icon: Star, text: "4.8★ Google Rating (393 reviews)" },
               { icon: Shield, text: "WA Licensed HG-064180 | USDOT 2120054" },
               { icon: BadgeCheck, text: "Serving Greater Seattle Since 2009" },
               { icon: CheckCircle, text: "Fully Licensed & Insured" },

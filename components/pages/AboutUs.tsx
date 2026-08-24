@@ -18,7 +18,7 @@ const TIMELINE = [
   { year: "2015", event: "Surpassed 5,000 successful moves. Earned Angie's List Super Service Award." },
   { year: "2018", event: "Launched commercial moving division to serve Eastside businesses and tech campuses." },
   { year: "2021", event: "Reached 1,000 Google reviews with a 4.8-star average. Expanded to 12 trucks." },
-  { year: "2024", event: "Over 25,000 moves completed. 1,562 five-star Google reviews and counting." },
+  { year: "2024", event: "Over 25,000 moves completed. 393 five-star Google reviews and counting." },
 ];
 
 const TEAM_QUALITIES = [
@@ -58,14 +58,14 @@ const FAQS = [
   },
   {
     q: "What makes On The Go Moving different from other Seattle movers?",
-    a: "On The Go Moving is locally owned and operated, not a franchise or broker. Every crew member is a direct employee, background-checked, trained, and uniformed. We offer flat-rate pricing, secure vault storage available, and a 4.8-star Google rating backed by over 1,562 reviews.",
+    a: "On The Go Moving is locally owned and operated, not a franchise or broker. Every crew member is a direct employee, background-checked, trained, and uniformed. We offer flat-rate pricing, secure vault storage available, and a 4.8-star Google rating backed by over 393 reviews.",
   },
 ];
 
 export default function AboutUs() {
   useSEO({
     title: "Seattle Moving Company Since 2009 | On The Go Moving",
-    description: "On The Go Moving & Storage, Seattle's trusted movers since 2009. 25,000+ moves, 1,562 five-star reviews, licensed & insured in WA. Meet our team.",
+    description: "On The Go Moving & Storage, Seattle's trusted movers since 2009. 25,000+ moves, 393 five-star reviews, licensed & insured in WA. Meet our team.",
     canonical: "https://onthegomoving.com/about-us/",
     ogType: "website",
     schema: [
@@ -80,7 +80,7 @@ export default function AboutUs() {
         founder: { "@type": "Person", "@id": "https://onthegomoving.com/jason-sexton/#person", name: "Jason Sexton", url: "https://onthegomoving.com/jason-sexton/" },
         address: {
           "@type": "PostalAddress",
-          streetAddress: "14920 NE 95th St",
+          streetAddress: "16625 Redmond Way #M365",
           addressLocality: "Redmond",
           addressRegion: "WA",
           postalCode: "98052",

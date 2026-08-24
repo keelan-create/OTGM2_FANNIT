@@ -268,7 +268,7 @@ export default function Header() {
             >
               <div className="flex items-center gap-1.5 mb-1">
                 {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="#fbc319" color="#fbc319" />)}
-                <span className="text-white/80 text-xs ml-1">4.8 · 1,562 reviews</span>
+                <span className="text-white/80 text-xs ml-1">4.8 · 393 reviews</span>
               </div>
               <p className="text-white font-bold text-base leading-snug" style={{ fontFamily: "'Barlow Condensed', sans-serif" }}>
                 Get a free quote in under 60 seconds
@@ -459,7 +459,7 @@ export default function Header() {
               </p>
               <div className="flex items-center gap-1.5">
                 {[1,2,3,4,5].map(i => <Star key={i} size={13} fill="#fbc319" color="#fbc319" />)}
-                <span className="text-gray-600 text-xs font-semibold ml-1">4.8 · 1,562 Google reviews</span>
+                <span className="text-gray-600 text-xs font-semibold ml-1">4.8 · 393 Google reviews</span>
               </div>
             </div>
           </div>

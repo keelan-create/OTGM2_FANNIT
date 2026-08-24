@@ -635,14 +635,14 @@ export default function CityServiceSubPage({ citySlug, serviceKey }: CityService
         telephone: cityData?.gbp?.telephone ?? COMPANY.phone,
         address: {
           "@type": "PostalAddress",
-          streetAddress: cityData?.gbp?.streetAddress ?? "14920 NE 95th St",
+          streetAddress: cityData?.gbp?.streetAddress ?? "16625 Redmond Way #M365",
           addressLocality: cityData?.gbp?.addressLocality ?? "Redmond",
           addressRegion: "WA",
           postalCode: cityData?.gbp?.postalCode ?? "98052",
           addressCountry: "US",
         },
         areaServed: { "@type": "City", name: city, containedInPlace: { "@type": "State", name: "Washington" } },
-        aggregateRating: { "@type": "AggregateRating", ratingValue: cityData?.gbp?.ratingValue ?? "4.8", reviewCount: cityData?.gbp?.reviewCount ?? "1562", bestRating: "5" },
+        aggregateRating: { "@type": "AggregateRating", ratingValue: cityData?.gbp?.ratingValue ?? "4.8", reviewCount: cityData?.gbp?.reviewCount ?? "393", bestRating: "5" },
         priceRange: "$$",
         openingHours: ["Mo-Su 00:00-00:00"],
       },
@@ -827,7 +827,7 @@ export default function CityServiceSubPage({ citySlug, serviceKey }: CityService
                 {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="#fbc319" color="#fbc319" />)}
               </div>
               <span className="text-white font-semibold">4.8</span>
-              <span className="text-white/50">(1,562 reviews)</span>
+              <span className="text-white/50">(393 reviews)</span>
               <span className="text-white/30 mx-1">·</span>
               <Shield size={12} className="text-[#75aa11] flex-shrink-0" />
               <span>Licensed &amp; Insured</span>
@@ -1082,6 +1082,17 @@ export default function CityServiceSubPage({ citySlug, serviceKey }: CityService
                   {SERVICE_ORDER.map((svcKey) => {
                     const svc = SERVICE_DEFS[svcKey];
                     if (!svc) return null;
+                    // "corporate-relocation" has no /{city}-movers/corporate-relocation/
+                    // sub-page for any city (not a valid serviceKey) — render as
+                    // plain text instead of a broken link.
+                    if (svcKey === "corporate-relocation") {
+                      return (
+                        <span key={svcKey} className="flex items-center gap-2 text-sm py-1.5 px-2 rounded-lg text-gray-600">
+                          <span className="text-base leading-none">{svc.icon}</span>
+                          {svc.label}
+                        </span>
+                      );
+                    }
                     const isActive = svcKey === serviceKey;
                     return (
                       <a key={svcKey} href={`/${cityMoverSlug}/${svcKey}/`}>
@@ -1105,7 +1116,7 @@ export default function CityServiceSubPage({ citySlug, serviceKey }: CityService
                 <h3 className="font-display font-bold text-brand-forest text-lg mb-4">Why Trust Us</h3>
                 <div className="space-y-3">
                   {[
-                    ["4.8★ rating", "1,562+ verified reviews"],
+                    ["4.8★ rating", "393 verified reviews"],
                     ["Licensed & Insured", "WA HG-064180 | USDOT# 2120054"],
                     ["Serving since 2009", "15+ years in Greater Seattle"],
                     ["No hidden fees", "Flat-rate pricing always"],

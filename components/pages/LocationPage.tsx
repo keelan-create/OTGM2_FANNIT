@@ -140,7 +140,7 @@ export default function LocationPage({ slug }: LocationPageProps) {
         email: COMPANY.email,
         address: {
           "@type": "PostalAddress",
-          streetAddress: data.gbp?.streetAddress ?? "14920 NE 95th St",
+          streetAddress: data.gbp?.streetAddress ?? "16625 Redmond Way #M365",
           addressLocality: data.gbp?.addressLocality ?? "Redmond",
           addressRegion: "WA",
           postalCode: data.gbp?.postalCode ?? "98052",
@@ -158,7 +158,7 @@ export default function LocationPage({ slug }: LocationPageProps) {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: data.gbp?.ratingValue ?? "4.8",
-          reviewCount: data.gbp?.reviewCount ?? "1562",
+          reviewCount: data.gbp?.reviewCount ?? "393",
           bestRating: "5",
           worstRating: "1",
         },
@@ -265,7 +265,7 @@ export default function LocationPage({ slug }: LocationPageProps) {
                   {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="#fbc319" color="#fbc319" />)}
                 </div>
                 <span className="text-white font-semibold">4.8</span>
-                <span className="text-white/50">(1,562 reviews)</span>
+                <span className="text-white/50">(393 reviews)</span>
                 <span className="text-white/30 mx-1">·</span>
                 <Shield size={12} className="text-[#75aa11] flex-shrink-0" />
                 <span>Licensed &amp; Insured</span>
@@ -363,7 +363,7 @@ export default function LocationPage({ slug }: LocationPageProps) {
                 className="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]"
               />
               <div className="absolute -bottom-4 -left-4 bg-brand-gold text-brand-forest font-bold px-5 py-3 rounded-xl shadow-lg text-sm">
-                4.8 ★ · 1,562 Google Reviews
+                4.8 ★ · 393 Google Reviews
               </div>
             </div>
           </div>
@@ -511,7 +511,7 @@ export default function LocationPage({ slug }: LocationPageProps) {
             <h2 className="font-display text-3xl lg:text-4xl font-black text-brand-forest mb-2">
               What {data.city} Customers Say
             </h2>
-            <p className="text-gray-500">4.8 stars · 1,562 verified Google reviews</p>
+            <p className="text-gray-500">4.8 stars · 393 verified Google reviews</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -726,15 +726,28 @@ export default function LocationPage({ slug }: LocationPageProps) {
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-            {CANONICAL_SERVICES.map((svc) => (
-              <a key={svc.key} href={`/${cityPrefix}-movers/${svc.key}/`}>
-                <span className="flex items-center gap-2 bg-gray-50 hover:bg-brand-green/10 border border-gray-200 hover:border-brand-green/30 text-gray-700 hover:text-brand-forest text-sm font-medium px-4 py-3 rounded-lg transition-all cursor-pointer group">
-                  <span className="text-base leading-none flex-shrink-0">{svc.icon}</span>
-                  <span className="flex-1">{svc.label}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-brand-green opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                </span>
-              </a>
-            ))}
+            {CANONICAL_SERVICES.map((svc) => {
+              // "corporate-relocation" has no /{city}-movers/corporate-relocation/
+              // sub-page for any city (not a valid serviceKey) — render as plain
+              // text instead of a broken link.
+              if (svc.key === "corporate-relocation") {
+                return (
+                  <span key={svc.key} className="flex items-center gap-2 bg-gray-50 border border-gray-200 text-gray-700 text-sm font-medium px-4 py-3 rounded-lg">
+                    <span className="text-base leading-none flex-shrink-0">{svc.icon}</span>
+                    <span className="flex-1">{svc.label}</span>
+                  </span>
+                );
+              }
+              return (
+                <a key={svc.key} href={`/${cityPrefix}-movers/${svc.key}/`}>
+                  <span className="flex items-center gap-2 bg-gray-50 hover:bg-brand-green/10 border border-gray-200 hover:border-brand-green/30 text-gray-700 hover:text-brand-forest text-sm font-medium px-4 py-3 rounded-lg transition-all cursor-pointer group">
+                    <span className="text-base leading-none flex-shrink-0">{svc.icon}</span>
+                    <span className="flex-1">{svc.label}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-brand-green opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                  </span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -805,6 +818,28 @@ export default function LocationPage({ slug }: LocationPageProps) {
               >
                 10 Best Moving Companies in Seattle (2026)
               </a>
+            )}
+            {data.slug === "bellevue-movers" && (
+              <>
+                <a
+                  href="/moving-to-bellevue/"
+                  className="inline-flex items-center gap-2 bg-white border border-gray-200 text-brand-forest font-semibold text-sm px-4 py-2 rounded-full hover:border-brand-forest hover:shadow-sm transition-all"
+                >
+                  Moving to Bellevue
+                </a>
+                <a
+                  href="/first-time-homebuyer-guide-eastside-seattle/"
+                  className="inline-flex items-center gap-2 bg-white border border-gray-200 text-brand-forest font-semibold text-sm px-4 py-2 rounded-full hover:border-brand-forest hover:shadow-sm transition-all"
+                >
+                  Eastside First-Time Homebuyer Guide
+                </a>
+                <a
+                  href="/how-to-time-your-move-mortgage-closing-date/"
+                  className="inline-flex items-center gap-2 bg-white border border-gray-200 text-brand-forest font-semibold text-sm px-4 py-2 rounded-full hover:border-brand-forest hover:shadow-sm transition-all"
+                >
+                  Time Your Move Around Closing
+                </a>
+              </>
             )}
             <a
               href="/faq/"

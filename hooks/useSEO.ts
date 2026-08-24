@@ -138,7 +138,7 @@ export const MOVING_COMPANY_SCHEMA = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
-    reviewCount: "1562",
+    reviewCount: "393",
     bestRating: "5",
     worstRating: "1",
   },
@@ -148,7 +148,7 @@ export const MOVING_COMPANY_SCHEMA = {
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "07:00", closes: "19:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Sunday"], opens: "07:00", closes: "19:00" },
   ],
-  description: "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 1,562+ Google reviews.",
+  description: "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 393 Google reviews.",
   sameAs: [
     "https://www.facebook.com/onthegomoving",
     "https://www.instagram.com/onthegomoving",
@@ -208,7 +208,7 @@ export function buildLocalBusinessSchema(city: string, state: string) {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",
-      reviewCount: "1562",
+      reviewCount: "393",
       bestRating: "5",
     },
   };

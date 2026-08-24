@@ -32,7 +32,7 @@ const BENEFITS = [
     icon: Star,
     color: "bg-amber-50 text-amber-600",
     title: "4.8★ Reputation You Can Stand Behind",
-    desc: "With 1,562 five-star Google reviews, your clients will thank you for the referral, not question it.",
+    desc: "With 393 five-star Google reviews, your clients will thank you for the referral, not question it.",
   },
   {
     icon: Shield,
@@ -114,7 +114,7 @@ export default function Partners() {
     if (meta)
       meta.setAttribute(
         "content",
-        "Partner with On The Go Moving & Storage. Trusted by real estate agents & stagers across Greater Seattle. 4.8 stars, 1,562 reviews, licensed & insured."
+        "Partner with On The Go Moving & Storage. Trusted by real estate agents & stagers across Greater Seattle. 4.8 stars, 393 reviews, licensed & insured."
       );
   }, []);
 
@@ -157,7 +157,7 @@ export default function Partners() {
                     <Star key={i} size={13} fill="#fbc319" color="#fbc319" />
                   ))}
                   <span className="font-bold text-white ml-1">4.8</span>
-                  <span className="text-white/60">(1,562 reviews)</span>
+                  <span className="text-white/60">(393 reviews)</span>
                 </div>
                 <span className="text-white/30 hidden sm:inline">|</span>
                 <div className="flex items-center gap-1.5">
@@ -203,7 +203,7 @@ export default function Partners() {
                 </div>
                 <div className="p-6 space-y-4">
                   {[
-                    { icon: Star, label: "4.8-star Google rating", sub: "1,562 verified reviews" },
+                    { icon: Star, label: "4.8-star Google rating", sub: "393 verified reviews" },
                     { icon: Shield, label: "Fully licensed & insured", sub: "WA HG-064180 · USDOT# 2120054" },
                     { icon: Users, label: "Priority scheduling for referrals", sub: "Dedicated partner contact" },
                     { icon: Award, label: "Secure vault storage", sub: "Available for all clients" },

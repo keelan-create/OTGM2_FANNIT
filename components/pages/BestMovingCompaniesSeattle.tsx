@@ -15,7 +15,7 @@ const COMPANIES = [
     phone: "(425) 761-8500",
     founded: "2009",
     googleRating: 4.8,
-    reviewCount: "1,562+",
+    reviewCount: "393",
     hourlyRate: "$115–$155/hr (2-person crew)",
     threeHourMin: "$345–$465",
     twoBedEstimate: "$450–$900",
@@ -32,7 +32,7 @@ const COMPANIES = [
       "Based in Redmond, travel time applies for far West Seattle moves",
       "Online booking fills up fast in summer peak season",
     ],
-    description: `On The Go Moving & Storage has been serving the greater Seattle area since 2009 and has built one of the strongest reputations in the market, 1,562+ five-star Google reviews, a 4.8-star average, and 25,000+ completed moves. What sets them apart for price shoppers is their fully transparent hourly pricing: you pay for the time the crew works, with no fuel surcharges, no stair fees, and no hidden add-ons. Every move includes Their crews are W-2 employees trained in-house, not gig workers pulled from a labor app, which is reflected in the consistency of their reviews. For most Seattle moves, On The Go is the best combination of price, reliability, and coverage.`,
+    description: `On The Go Moving & Storage has been serving the greater Seattle area since 2009 and has built one of the strongest reputations in the market, 393 five-star Google reviews, a 4.8-star average, and 25,000+ completed moves. What sets them apart for price shoppers is their fully transparent hourly pricing: you pay for the time the crew works, with no fuel surcharges, no stair fees, and no hidden add-ons. Every move includes Their crews are W-2 employees trained in-house, not gig workers pulled from a labor app, which is reflected in the consistency of their reviews. For most Seattle moves, On The Go is the best combination of price, reliability, and coverage.`,
     internalLinks: [
       { label: "Seattle Movers", href: "/" },
       { label: "Seattle Apartment Moving", href: "/seattle-apartment-moving/" },
@@ -56,7 +56,7 @@ const COMPANIES = [
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "4.8",
-        reviewCount: "1562",
+        reviewCount: "393",
       },
       sameAs: ["https://share.google/kOvPFtNuCbovRUD7T"],
     },
@@ -563,7 +563,7 @@ export default function BestMovingCompaniesSeattle() {
           <div className="mt-6 p-4 bg-[#1e3a0f] text-white rounded-xl flex flex-col sm:flex-row gap-4 items-start sm:items-center">
             <div className="flex-1">
               <p className="font-bold text-lg">Our #1 Pick: On The Go Moving & Storage</p>
-              <p className="text-sm text-gray-300 mt-1">4.8 stars · 1,562+ Google reviews · $115–$155/hr · No hidden fees · Vault storage available</p>
+              <p className="text-sm text-gray-300 mt-1">4.8 stars · 393 Google reviews · $115–$155/hr · No hidden fees · Vault storage available</p>
             </div>
             <a
               href="tel:4257618500"
@@ -835,7 +835,7 @@ export default function BestMovingCompaniesSeattle() {
             We evaluated each company across five criteria: <strong>pricing transparency</strong> (hourly vs. volume-based, hidden fees), <strong>verified ratings</strong> (Google, Yelp, Angi), <strong>licensing</strong> (Washington State UTC registration), <strong>insurance coverage</strong>, and <strong>real customer feedback</strong> from Reddit, community forums, and review aggregators. We did not accept payment or incentives from any company listed here.
           </p>
           <p className="text-gray-700 text-sm leading-relaxed">
-            On The Go Moving ranked #1 because they combine the most transparent pricing structure in the Seattle market (true hourly billing with no add-on fees), the highest verified review volume among local independent movers (1,562+ Google reviews), and the broadest service coverage across Seattle and all Eastside suburbs. Their crews are W-2 employees, not subcontractors, which directly correlates with the consistency of their reviews.
+            On The Go Moving ranked #1 because they combine the most transparent pricing structure in the Seattle market (true hourly billing with no add-on fees), the highest verified review volume among local independent movers (393 Google reviews), and the broadest service coverage across Seattle and all Eastside suburbs. Their crews are W-2 employees, not subcontractors, which directly correlates with the consistency of their reviews.
           </p>
         </section>
 
@@ -948,7 +948,7 @@ export default function BestMovingCompaniesSeattle() {
             Ready to Book Seattle's #1 Rated Mover?
           </h2>
           <p className="text-gray-600 text-sm mb-5">
-            On The Go Moving, 4.8 stars, 1,562+ Google reviews, transparent hourly pricing, and secure vault storage available.
+            On The Go Moving, 4.8 stars, 393 Google reviews, transparent hourly pricing, and secure vault storage available.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a

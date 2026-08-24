@@ -301,6 +301,12 @@
   force = true
 
 [[redirects]]
+  from = "/how-to-plan-office-move-without-disrupting-team/"
+  to = "/commercial-moving-timeline-what-to-expect/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/office-relocation/"
   to = "/commercial-moving/"
   status = 301
@@ -2333,5 +2339,158 @@
 [[redirects]]
   from = "/blog/9-moving-lessons-dont-have-to-learn-hard-way/"
   to = "/residential-moving/"
+  status = 301
+  force = true
+
+# SEO cleanup — city×service sub-pages that were never built (invalid service
+# keys for /{city}-movers/{service}/), redirected to the matching service hub.
+[[redirects]]
+  from = "/woodinville-movers/corporate-relocation/"
+  to = "/corporate-relocation/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/medina-movers/corporate-relocation/"
+  to = "/corporate-relocation/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/kirkland-movers/corporate-relocation/"
+  to = "/corporate-relocation/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/fremont-movers/corporate-relocation/"
+  to = "/corporate-relocation/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/olympia-movers/corporate-relocation/"
+  to = "/corporate-relocation/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/ballard-movers/corporate-relocation/"
+  to = "/corporate-relocation/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/burien-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/issaquah-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/lynnwood-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/mercer-island-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/mukilteo-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/tukwila-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/woodinville-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/sammamish-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/kirkland-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/kenmore-movers/labor-only/"
+  to = "/labor-only-moving/"
+  status = 301
+  force = true
+
+# SEO cleanup — old flat Bellevue service-page slugs, replaced by
+# /bellevue-movers/{service}/ sub-pages.
+[[redirects]]
+  from = "/bellevue-residential-moving/"
+  to = "/bellevue-movers/residential/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/bellevue-apartment-moving/"
+  to = "/bellevue-movers/apartment/"
+  status = 301
+  force = true
+
+# ─── Cannibalization cleanup 301 redirects (August 2026) ──────────────────────
+[[redirects]]
+  from = "/when-is-the-best-time-to-move-into-an-apartment/"
+  to = "/best-time-to-rent-an-apartment-guide/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/things-to-do-in-woodinville/"
+  to = "/living-in-woodinville-wa/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/things-to-do-in-downtown-seattle-washington/"
+  to = "/living-in-downtown-seattle/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/green-moving-eco-friendly-10-tips/"
+  to = "/eco-friendly-moving-sustainable-practices-for-your-next-move/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/furniture-storage-units/"
+  to = "/storage-services/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/how-to-find-the-best-temporary-storage-units-in-your-area/"
+  to = "/storage-services/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/top-7-tips-for-a-smooth-move-a-moving-companys-recommendations-for-your-moving-day/"
+  to = "/moving-hacks/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/packing-fragile-items/"
+  to = "/how-to-protect-fragile-items-during-a-move/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/how-to-efficiently-pack-a-storage-container/"
+  to = "/how-to-pack-a-storage-unit/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/best-tips-for-winter-moving/"
+  to = "/10-expert-tips-to-make-your-winter-move-an-easier-mission/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/how-to-fold-for-packing/"
+  to = "/how-to-pack-clothes-for-moving/"
   status = 301
   force = true
