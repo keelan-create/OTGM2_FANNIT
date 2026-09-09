@@ -38,6 +38,37 @@ const organizationSchema = {
   ],
   description:
     "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 393 Google reviews.",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+14257618500",
+    contactType: "customer service",
+    areaServed: "US",
+    availableLanguage: "English",
+    hoursAvailable: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "07:00",
+      closes: "19:00",
+    },
+  },
+  knowsAbout: [
+    "Residential Moving",
+    "Commercial Moving",
+    "Storage Services",
+    "Apartment Moving",
+    "Senior Moving",
+    "Staging Professionals",
+    "Packing Services",
+    "Labor Only Moving",
+    "Furniture Moving",
+    "Condo Moving",
+    "Appliance Moving",
+    "Unpacking Services",
+    "Warehousing & Distribution",
+    "Office Moving",
+    "Corporate Relocation",
+    "Freight Forwarding",
+  ],
 };
 
 const localBusinessSchema = {
@@ -63,6 +94,8 @@ const localBusinessSchema = {
     latitude: 47.674,
     longitude: -122.1215,
   },
+  hasMap:
+    "https://www.google.com/maps/search/?api=1&query=16625+Redmond+Way+%23M365+Redmond+WA+98052",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
@@ -107,8 +140,8 @@ const localBusinessSchema = {
 };
 
 // No on-site search endpoint exists, so WebSite intentionally omits potentialAction/SearchAction.
-// hasPart is limited to /faq/ and /blog/ — the only cross-site index pages confirmed to exist
-// as real routes (app/(main)/faq/page.tsx, app/(main)/blog/page.tsx).
+// hasPart is limited to top-level index/utility pages confirmed to exist as real routes
+// under app/(main)/ — do not add pages here without verifying the route exists.
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -119,13 +152,31 @@ const websiteSchema = {
   inLanguage: "en-US",
   hasPart: [
     {
+      "@type": "AboutPage",
+      "@id": "https://onthegomoving.com/about-us/#webpage",
+      name: "About Us | On The Go Moving & Storage",
+      url: "https://onthegomoving.com/about-us/",
+    },
+    {
+      "@type": "ContactPage",
+      "@id": "https://onthegomoving.com/contact-us/#webpage",
+      name: "Contact Us | On The Go Moving & Storage",
+      url: "https://onthegomoving.com/contact-us/",
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://onthegomoving.com/services/#webpage",
+      name: "Moving Services in Seattle & Eastside WA | On The Go Moving & Storage",
+      url: "https://onthegomoving.com/services/",
+    },
+    {
       "@type": "WebPage",
       "@id": "https://onthegomoving.com/faq/#webpage",
       name: "Moving FAQ | Common Questions Answered",
       url: "https://onthegomoving.com/faq/",
     },
     {
-      "@type": "WebPage",
+      "@type": "Blog",
       "@id": "https://onthegomoving.com/blog/#webpage",
       name: "Moving Tips & Resources Blog",
       url: "https://onthegomoving.com/blog/",
