@@ -20,82 +20,21 @@ export const metadata: Metadata = {
 
 // ── Server-side JSON-LD schema ────────────────────────────────────────────────
 // Injected directly into the static HTML so Googlebot sees it without JS execution.
-const localBusinessSchema = {
+// The Organization, LocalBusiness (@id .../#local-business), and WebSite
+// (@id .../#website) entities are already declared sitewide in app/layout.tsx.
+// This page only adds the WebPage and FAQPage entities specific to the homepage,
+// referencing those sitewide @ids instead of redeclaring a second, orphaned copy.
+const webPageSchema = {
   "@context": "https://schema.org",
-  "@type": ["MovingCompany", "LocalBusiness"],
-  name: "On The Go Moving & Storage",
-  url: "https://onthegomoving.com",
-  logo: "https://onthegomoving.com/wp-content/uploads/2021/01/on-the-go-moving-logo.png",
-  image:
-    "https://onthegomoving.com/wp-content/uploads/2021/01/on-the-go-moving-storage-truck.jpg",
-  telephone: "+14257618500",
-  email: "booking@onthegomoving.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "16625 Redmond Way #M365",
-    addressLocality: "Redmond",
-    addressRegion: "WA",
-    postalCode: "98052",
-    addressCountry: "US",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 47.674,
-    longitude: -122.1215,
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "393",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  priceRange: "$$",
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "07:00",
-      closes: "19:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Saturday"],
-      opens: "07:00",
-      closes: "19:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Sunday"],
-      opens: "07:00",
-      closes: "19:00",
-    },
-  ],
-  sameAs: [
-    "https://www.facebook.com/onthegomoving",
-    "https://www.instagram.com/onthegomoving",
-    "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-  ],
-  areaServed: [
-    "Seattle, WA", "Bellevue, WA", "Redmond, WA", "Kirkland, WA",
-    "Issaquah, WA", "Bothell, WA", "Renton, WA", "Shoreline, WA",
-    "Sammamish, WA", "Woodinville, WA", "Kenmore, WA", "Mercer Island, WA",
-    "Lynnwood, WA", "Mukilteo, WA", "Burien, WA", "Tukwila, WA",
-    "Mountlake Terrace, WA", "Lake Forest Park, WA", "Newcastle, WA",
-    "Snoqualmie, WA", "North Bend, WA", "Duvall, WA", "Carnation, WA",
-    "Fall City, WA", "Maple Valley, WA", "Covington, WA",
-  ],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Moving Services",
-    itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Residential Moving" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Moving" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Packing Services" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Storage Services" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Long Distance Moving" } },
-    ],
-  },
+  "@type": "WebPage",
+  "@id": "https://onthegomoving.com/#webpage",
+  url: "https://onthegomoving.com/",
+  name: "Seattle Movers – On The Go Moving & Storage",
+  description:
+    "On The Go Moving & Storage is Seattle's local moving company. Serving all Seattle neighborhoods, residential, commercial, and apartment moves. Get a free quote today.",
+  isPartOf: { "@id": "https://onthegomoving.com/#website" },
+  about: { "@id": "https://onthegomoving.com/#organization" },
+  mainEntity: { "@id": "https://onthegomoving.com/#local-business" },
 };
 
 const faqSchema = {
@@ -159,7 +98,7 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([localBusinessSchema, faqSchema]),
+          __html: JSON.stringify([webPageSchema, faqSchema]),
         }}
       />
       <HomePageContent />
