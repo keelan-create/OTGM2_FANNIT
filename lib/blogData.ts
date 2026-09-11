@@ -5623,6 +5623,10 @@ This guide takes a different approach from the typical "red flags to watch for" 
       {
         q: `What is released value protection, and is it enough coverage for my move?`,
         a: `Released value protection is the default liability coverage that moving companies are required to provide at no charge. It covers damaged or lost items at $0.60 per pound per item, which is far below the replacement value of most household goods. A 50-pound television would be covered for $30 under released value protection. For most moves, For a complete breakdown of what moving insurance covers and what it doesn't, see our <a href="/moving-insurance-what-it-covers-and-what-it-doesnt/">moving insurance guide</a>. Full value protection is worth the additional cost, because it covers repair or replacement at current market value. Ask your moving company about full value protection options before your move date.`
+      },
+      {
+        q: `What are red flags with moving companies?`,
+        a: `The clearest red flags are a deposit of 50 percent or more up front, a low estimate given over the phone with no in-home or virtual walkthrough, and no Washington State UTC license or USDOT number when you ask for one directly. Other warning signs: unmarked or rented trucks, a crew with no uniforms or ID, no verifiable business address, and a company that is vague about its damage claims process or won't put the estimate in writing. A pattern of unresolved Better Business Bureau complaints or almost no online reviews is worth taking seriously too. None of these alone proves a company is dishonest, but two or three together are reason to keep looking elsewhere. On The Go Moving is fully licensed and family-owned, and has served the Seattle, Bellevue, Kirkland, and Redmond area since 2009. Request a free quote to see what a transparent company looks like.`
       }
     ]
   },
