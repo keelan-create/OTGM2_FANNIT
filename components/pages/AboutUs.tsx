@@ -99,10 +99,22 @@ export default function AboutUs() {
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
+        "@id": "https://onthegomoving.com/about-us/#breadcrumb",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://onthegomoving.com/" },
           { "@type": "ListItem", position: 2, name: "About Us", item: "https://onthegomoving.com/about-us/" },
         ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": "https://onthegomoving.com/about-us/#webpage",
+        url: "https://onthegomoving.com/about-us/",
+        name: "About On The Go Moving & Storage",
+        description:
+          "Learn about On The Go Moving & Storage, founded in 2009 by Jason Sexton in Redmond, WA. Licensed, insured, and serving the Seattle and Eastside area with 25,000+ moves completed.",
+        about: { "@id": "https://onthegomoving.com/#organization" },
+        breadcrumb: { "@id": "https://onthegomoving.com/about-us/#breadcrumb" },
       },
     ],
   });
