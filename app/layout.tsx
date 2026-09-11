@@ -135,6 +135,10 @@ const localBusinessSchema = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Packing Services" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Storage Services" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Long Distance Moving" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Apartment Moving" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Condo Moving" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Office Moving" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Corporate Relocation" } },
     ],
   },
 };

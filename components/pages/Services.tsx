@@ -196,6 +196,33 @@ const SCHEMA = {
   })),
 };
 
+// Hub-level Service entity for the /services/ overview itself. Each individual
+// service (Residential Moving, Commercial Moving, etc.) already carries its own
+// dedicated Service schema on its own page (see ServicePage.tsx / ResidentialMoving.tsx),
+// so this intentionally does not restate all of them here.
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://onthegomoving.com/services/#service",
+  name: "Moving & Storage Services",
+  serviceType: "Moving Company",
+  description:
+    "On The Go Moving & Storage offers residential, commercial, storage, apartment, senior moving, packing, and staging services throughout the Seattle/Eastside area and Western Washington.",
+  provider: { "@id": "https://onthegomoving.com/#local-business" },
+  areaServed: ["Seattle, WA", "Bellevue, WA", "Redmond, WA", "Kirkland, WA"],
+  url: "https://onthegomoving.com/services/",
+};
+
+const BREADCRUMB_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://onthegomoving.com/services/#breadcrumb",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://onthegomoving.com/" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://onthegomoving.com/services/" },
+  ],
+};
+
 export default function Services() {
   useEffect(() => {
     document.title = "Moving Services in Seattle & Eastside WA | On The Go Moving";
@@ -215,7 +242,7 @@ export default function Services() {
     const script = document.createElement("script");
     script.id = schemaId;
     script.type = "application/ld+json";
-    script.text = JSON.stringify(SCHEMA);
+    script.text = JSON.stringify([SCHEMA, SERVICE_SCHEMA, BREADCRUMB_SCHEMA]);
     document.head.appendChild(script);
     return () => { document.getElementById(schemaId)?.remove(); };
   }, []);
