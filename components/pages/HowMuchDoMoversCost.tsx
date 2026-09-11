@@ -60,7 +60,7 @@ const FAQS = [
   },
   {
     q: "How much do movers charge per hour?",
-    a: "On The Go Moving charges by the hour based on crew size. All rates include the moving truck, fuel, basic equipment, and standard valuation coverage. Call us or request a free quote for current rates, pricing varies by season, availability, and move details.",
+    a: "Movers in the Seattle area typically charge $100–$200 per hour, depending on crew size and the specifics of your move. On The Go Moving charges by the hour based on crew size, and all rates include the moving truck, fuel, basic equipment, and standard valuation coverage. Request a free quote for your exact rate, pricing varies by season, availability, and move details.",
   },
   {
     q: "Is it cheaper to move yourself or hire movers?",
