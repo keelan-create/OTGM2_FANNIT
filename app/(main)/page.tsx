@@ -49,7 +49,7 @@ const faqSchema = {
       name: "How much does it cost to hire movers in Seattle?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Local moves in the Seattle area typically cost between $100\u2013$200 per hour for a 2-person crew with a truck. The total cost depends on the size of your home, distance, and any additional services like packing. Most 2-bedroom moves run $500\u2013$1,200. Get a free, no-obligation quote from us for an exact estimate.",
+        text: "Local moves in the Seattle area typically cost about $100\u2013$180 per hour for a 2-person crew with a truck, and $150\u2013$250 per hour for a 3-person crew. The total cost depends on the size of your home, distance, and any additional services like packing. Most 2-bedroom moves run $500\u2013$1,200. Get a free, no-obligation quote from us for an exact estimate.",
       },
     },
     {

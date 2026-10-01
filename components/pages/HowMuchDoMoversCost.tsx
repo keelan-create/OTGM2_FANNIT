@@ -14,7 +14,7 @@ import QuoteForm from "@/components/QuoteForm";
 import { COMPANY } from "@/lib/siteData";
 import { CheckCircle, ArrowRight, Phone, Star, AlertCircle, TrendingDown, TrendingUp, Clock } from "lucide-react";
 import { BRAND_IMAGES } from "@/lib/brandImages";
-import { useSEO, MOVING_COMPANY_SCHEMA, buildFAQSchema } from "@/hooks/useSEO";
+import { useSEO, MOVING_COMPANY_SCHEMA } from "@/hooks/useSEO";
 
 const PRICING_TABLE = [
   { size: "Studio / 1-Bedroom", crew: "2 movers", hours: "2–4 hrs", range: "$300–$600", notes: "Minimal furniture, no stairs" },
@@ -59,8 +59,8 @@ const FAQS = [
     a: "In Seattle and the Eastside, most local moves cost between $300 and $1,600 depending on home size, crew size, and move duration. A studio or 1-bedroom typically runs $300–$600 with a 2-person crew. A 2–3 bedroom home averages $600–$1,200 with a 3-person crew. On The Go Moving charges by the hour with no hidden fees.",
   },
   {
-    q: "How much do movers charge per hour?",
-    a: "On The Go Moving charges by the hour based on crew size. All rates include the moving truck, fuel, basic equipment, and standard valuation coverage. Call us or request a free quote for current rates, pricing varies by season, availability, and move details.",
+    q: "How much do movers charge per hour in Seattle?",
+    a: "Most Seattle movers charge between $100 and $250 per hour. The biggest factor is crew size. A 2-person crew with a truck usually runs about $100 to $180 per hour. A 3-person crew usually runs about $150 to $250 per hour. Rates tend to be higher in summer, on weekends, and at the end of the month, when demand peaks. Seattle traffic, tight parking, and elevator reservations in apartment and condo buildings can also add time to your move.\n\nThe hourly rate is only part of the price. Ask every mover what is included. Some companies add travel time fees, fuel surcharges, or charges for blankets, shrink wrap, and packing supplies. Many also have a minimum of 2 to 3 hours. Pianos, safes, and large appliances may cost extra too. These add-ons are how a cheap-looking hourly rate turns into a big bill on moving day.\n\nOn The Go Moving & Storage charges by the hour based on crew size. Our rates include the truck, fuel, moving blankets and pads, dollies, and standard valuation coverage. We are licensed (WA HG-064180) and insured. Rates vary by season, availability, and the details of your move, so call us or request a free quote for an exact price.",
   },
   {
     q: "Is it cheaper to move yourself or hire movers?",
@@ -115,10 +115,8 @@ export default function HowMuchDoMoversCost() {
     description: "How much do movers cost in Seattle? See typical cost ranges by home size, what affects your price, and cost-saving tips from On The Go Moving.",
     canonical: "https://onthegomoving.com/how-much-do-movers-cost/",
     ogType: "article",
-    schema: [
-      MOVING_COMPANY_SCHEMA,
-      buildFAQSchema(FAQS.map((f) => ({ question: f.q, answer: f.a }))),
-    ],
+    // FAQPage is rendered once, inline next to the visible FAQ (static HTML).
+    schema: [MOVING_COMPANY_SCHEMA],
   });
 
   return (
