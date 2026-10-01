@@ -1,137 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { BRAND_IMAGES } from "@/lib/brandImages";
+import { ORGANIZATION_SCHEMA, LOCAL_BUSINESS_SCHEMA, WEBSITE_SCHEMA } from "@/lib/schema";
 
 // ── Server-side sitewide JSON-LD ──────────────────────────────────────────────
 // Rendered directly into the static HTML on every page so Googlebot sees the
-// Organization/LocalBusiness graph without JS execution. Other pages can
-// reference these entities via @id instead of duplicating the full object.
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://onthegomoving.com/#organization",
-  name: "On The Go Moving & Storage",
-  url: "https://onthegomoving.com",
-  logo: BRAND_IMAGES.logo,
-  foundingDate: "2009",
-  founder: {
-    "@type": "Person",
-    "@id": "https://onthegomoving.com/jason-sexton/#person",
-    name: "Jason Sexton",
-    url: "https://onthegomoving.com/jason-sexton/",
-  },
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "16625 Redmond Way #M365",
-    addressLocality: "Redmond",
-    addressRegion: "WA",
-    postalCode: "98052",
-    addressCountry: "US",
-  },
-  telephone: "+14257618500",
-  email: "booking@onthegomoving.com",
-  sameAs: [
-    "https://www.facebook.com/onthegomoving",
-    "https://www.instagram.com/onthegomoving",
-    "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-    "https://share.google/wz8Px2cowaHkprOAM",
-  ],
-  description:
-    "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 393 Google reviews.",
-};
-
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": ["MovingCompany", "LocalBusiness"],
-  "@id": "https://onthegomoving.com/#local-business",
-  name: "On The Go Moving & Storage",
-  url: "https://onthegomoving.com",
-  logo: BRAND_IMAGES.logo,
-  image: "https://onthegomoving.com/wp-content/uploads/2021/01/on-the-go-moving-storage-truck.jpg",
-  telephone: "+14257618500",
-  email: "booking@onthegomoving.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "16625 Redmond Way #M365",
-    addressLocality: "Redmond",
-    addressRegion: "WA",
-    postalCode: "98052",
-    addressCountry: "US",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 47.674,
-    longitude: -122.1215,
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "393",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  priceRange: "$$",
-  openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "07:00", closes: "19:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "07:00", closes: "19:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Sunday"], opens: "07:00", closes: "19:00" },
-  ],
-  description:
-    "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 393 Google reviews.",
-  sameAs: [
-    "https://www.facebook.com/onthegomoving",
-    "https://www.instagram.com/onthegomoving",
-    "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-    "https://share.google/wz8Px2cowaHkprOAM",
-  ],
-  areaServed: [
-    "Seattle, WA", "Bellevue, WA", "Redmond, WA", "Kirkland, WA",
-    "Issaquah, WA", "Bothell, WA", "Renton, WA", "Shoreline, WA",
-    "Sammamish, WA", "Woodinville, WA", "Kenmore, WA", "Mercer Island, WA",
-    "Lynnwood, WA", "Mukilteo, WA", "Burien, WA", "Tukwila, WA",
-    "Mountlake Terrace, WA", "Lake Forest Park, WA", "Newcastle, WA",
-    "Snoqualmie, WA", "North Bend, WA", "Duvall, WA", "Carnation, WA",
-    "Fall City, WA", "Maple Valley, WA", "Covington, WA",
-  ],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Moving Services",
-    itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Residential Moving" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Moving" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Packing Services" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Storage Services" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Long Distance Moving" } },
-    ],
-  },
-};
-
-// No on-site search endpoint exists, so WebSite intentionally omits potentialAction/SearchAction.
-// hasPart is limited to /faq/ and /blog/ — the only cross-site index pages confirmed to exist
-// as real routes (app/(main)/faq/page.tsx, app/(main)/blog/page.tsx).
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://onthegomoving.com/#website",
-  name: "On The Go Moving & Storage",
-  url: "https://onthegomoving.com",
-  publisher: { "@id": "https://onthegomoving.com/#organization" },
-  inLanguage: "en-US",
-  hasPart: [
-    {
-      "@type": "WebPage",
-      "@id": "https://onthegomoving.com/faq/#webpage",
-      name: "Moving FAQ | Common Questions Answered",
-      url: "https://onthegomoving.com/faq/",
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://onthegomoving.com/blog/#webpage",
-      name: "Moving Tips & Resources Blog",
-      url: "https://onthegomoving.com/blog/",
-    },
-  ],
-};
+// Organization/LocalBusiness/WebSite graph without JS execution. Entities are
+// defined once in lib/schema.ts. Other pages reference them via @id.
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://onthegomoving.com"),
@@ -237,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationSchema, localBusinessSchema, websiteSchema]),
+            __html: JSON.stringify([ORGANIZATION_SCHEMA, LOCAL_BUSINESS_SCHEMA, WEBSITE_SCHEMA]),
           }}
         />
       </head>

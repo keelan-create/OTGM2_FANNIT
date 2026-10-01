@@ -143,21 +143,7 @@ export default function JasonSexton() {
           "Jason Sexton is the founder and owner of On The Go Moving & Storage, a licensed and insured moving company based in Redmond, WA. He has been in the moving industry since 2009 and has overseen more than 25,000 residential and commercial moves across the Greater Seattle area.",
         url: "https://onthegomoving.com/jason-sexton/",
         image: BRAND_IMAGES.jasonSextonHeadshot,
-        worksFor: {
-          "@type": "LocalBusiness",
-          "@id": "https://onthegomoving.com/#organization",
-          name: "On The Go Moving & Storage",
-          url: "https://onthegomoving.com",
-          telephone: "+14257618500",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "16625 Redmond Way #M365",
-            addressLocality: "Redmond",
-            addressRegion: "WA",
-            postalCode: "98052",
-            addressCountry: "US",
-          },
-        },
+        worksFor: { "@id": "https://onthegomoving.com/#organization" },
         knowsAbout: [
           "Residential Moving",
           "Commercial Moving",

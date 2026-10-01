@@ -16,6 +16,7 @@ import QuoteForm from "@/components/QuoteForm";
 import { BRAND_IMAGES } from "@/lib/brandImages";
 import { COMPANY } from "@/lib/siteData";
 import { LOCATION_DATA, ALL_LOCATION_SLUGS } from "@/lib/locationData";
+import { buildLocationBusinessSchema, isSecondaryLocation, LOCAL_BUSINESS_REF } from "@/lib/schema";
 import {
   CheckCircle,
   Phone,
@@ -125,61 +126,46 @@ export default function LocationPage({ slug }: LocationPageProps) {
     canonical.href = `https://onthegomoving.com/${data.slug}/`;
 
     // JSON-LD Schema — LocalBusiness + FAQPage + BreadcrumbList
+    const cityAreaServed = [
+      { "@type": "City", name: data.city, containedInPlace: { "@type": "State", name: "Washington" } },
+      ...SERVICE_AREA_CITIES.map(c => ({ "@type": "City", name: c.city })),
+    ];
+    const knowsAbout = [
+      `Moving services in ${data.city}, WA`,
+      "Residential moving",
+      "Commercial moving",
+      "Packing services",
+      "Storage services",
+      "Apartment moving",
+      "Senior moving",
+      "Specialty moving",
+    ];
     const schemaId = "location-schema";
     document.getElementById(schemaId)?.remove();
     const script = document.createElement("script");
     script.id = schemaId;
     script.type = "application/ld+json";
     script.text = JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": ["MovingCompany", "LocalBusiness"],
-        name: COMPANY.name,
-        url: `https://onthegomoving.com/${data.slug}/`,
-        telephone: data.gbp?.telephone ?? COMPANY.phone,
-        email: COMPANY.email,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: data.gbp?.streetAddress ?? "16625 Redmond Way #M365",
-          addressLocality: data.gbp?.addressLocality ?? "Redmond",
-          addressRegion: "WA",
-          postalCode: data.gbp?.postalCode ?? "98052",
-          addressCountry: "US",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: data.gbp?.latitude ?? 47.6740,
-          longitude: data.gbp?.longitude ?? -122.1215,
-        },
-        areaServed: [
-          { "@type": "City", name: data.city, containedInPlace: { "@type": "State", name: "Washington" } },
-          ...SERVICE_AREA_CITIES.map(c => ({ "@type": "City", name: c.city })),
-        ],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: data.gbp?.ratingValue ?? "4.8",
-          reviewCount: data.gbp?.reviewCount ?? "393",
-          bestRating: "5",
-          worstRating: "1",
-        },
-        priceRange: "$$",
-        openingHours: ["Mo-Su 00:00-00:00"],
-        hasMap: `https://www.google.com/maps/search/On+The+Go+Moving+${encodeURIComponent(data.city)}+WA`,
-        sameAs: [
-          "https://www.facebook.com/onthegomoving",
-          "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-        ],
-        knowsAbout: [
-          `Moving services in ${data.city}, WA`,
-          "Residential moving",
-          "Commercial moving",
-          "Packing services",
-          "Storage services",
-          "Apartment moving",
-          "Senior moving",
-          "Specialty moving",
-        ],
-      },
+      // Seattle/Bellevue: that GBP location's own LocalBusiness (own @id + reviews).
+      // Every other city: a Service whose provider is the HQ LocalBusiness by @id.
+      // Never emit an unidentified business block here (AIV audit 2026-09-01).
+      isSecondaryLocation(data)
+        ? {
+            "@context": "https://schema.org",
+            ...buildLocationBusinessSchema(data),
+            areaServed: cityAreaServed,
+            knowsAbout,
+          }
+        : {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": `https://onthegomoving.com/${data.slug}/#service`,
+            name: `Moving Services in ${data.city}, WA`,
+            serviceType: "Moving services",
+            url: `https://onthegomoving.com/${data.slug}/`,
+            provider: LOCAL_BUSINESS_REF,
+            areaServed: cityAreaServed,
+          },
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",

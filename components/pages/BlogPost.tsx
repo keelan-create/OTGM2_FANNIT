@@ -196,15 +196,12 @@ export default function BlogPost({ slug: slugProp }: { slug?: string }) {
         "name": "Jason Sexton",
         "url": "https://onthegomoving.com/jason-sexton/",
         "jobTitle": "Founder & Owner",
-        "worksFor": {
-          "@type": "LocalBusiness",
-          "name": "On The Go Moving & Storage",
-          "url": "https://onthegomoving.com",
-        },
+        "worksFor": { "@id": "https://onthegomoving.com/#organization" },
         "image": "https://onthegomoving.com/assets/jason-sexton-headshot.jpg",
       },
       "publisher": {
         "@type": "Organization",
+        "@id": "https://onthegomoving.com/#organization",
         "name": "On The Go Moving & Storage",
         "url": "https://onthegomoving.com",
         "logo": {

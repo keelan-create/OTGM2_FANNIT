@@ -26,7 +26,7 @@
 | Build command | `pnpm build` |
 | Output directory | `out/` |
 | Hosting | Netlify — auto-deploys from GitHub `main` branch |
-| GitHub repo | `kenei631-cmd/onthegomoving-nextjs` |
+| GitHub repo | `keelan-create/otgm2_fannit` (live, confirmed Oct 2026; previously `kenei631-cmd/onthegomoving-nextjs`) |
 | Netlify site name | `on-the-go-moving` |
 | Netlify site ID | `0aef4e19-01b8-4839-9be2-56d3076831a6` |
 | CRM | Supermove (via Netlify Functions) |
@@ -125,6 +125,10 @@ The site uses Next.js App Router with a `(main)` route group for all public page
 - Every page needs: unique `<title>`, `<meta description>`, canonical tag, and JSON-LD schema
 - Use `useSEO()` hook from `hooks/useSEO.ts` for all pages
 - `MOVING_COMPANY_SCHEMA` from `useSEO.ts` is the global LocalBusiness schema — import and include it on every page
+- **`lib/schema.ts` is the single source of truth for business entities.** Organization (`/#organization`), HQ LocalBusiness (`/#local-business`) and WebSite (`/#website`) render server-side on every page from `app/layout.tsx`. `MOVING_COMPANY_SCHEMA` is the same object as the HQ LocalBusiness.
+- **Never add an unidentified `MovingCompany`/`LocalBusiness` block.** Reference the business by `@id` instead (`LOCAL_BUSINESS_REF`, `ORGANIZATION_REF`), e.g. as a Service `provider` or Person `worksFor`.
+- The only other LocalBusiness entities are the verified secondary GBP locations (Seattle, Bellevue), built by `buildLocationBusinessSchema()` with their own `@id` (`/{city}-movers/#local-business`), their own GBP review count, and `parentOrganization`. All other city pages emit a `Service` whose provider is the HQ entity.
+- Homepage adds a `WebPage` (`/#webpage`) linked to the WebSite, Organization and LocalBusiness. No `SearchAction`: the site has no search endpoint.
 
 ### Canonical tags
 - Canonical format: `https://onthegomoving.com/{slug}/` (always trailing slash, always full URL)
