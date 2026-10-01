@@ -32,7 +32,7 @@ const BENEFITS = [
     icon: Star,
     color: "bg-amber-50 text-amber-600",
     title: "4.8★ Reputation You Can Stand Behind",
-    desc: "With 393 five-star Google reviews, your clients will thank you for the referral, not question it.",
+    desc: "With a 4.8-star average across 393 Google reviews, your clients will thank you for the referral, not question it.",
   },
   {
     icon: Shield,

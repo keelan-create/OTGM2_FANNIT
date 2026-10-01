@@ -307,7 +307,7 @@ export default function Home() {
                 Seattle's Most Trusted Moving Company
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Since {COMPANY.founded}, we've built our reputation one move at a time, with over {COMPANY.googleReviewCount.toLocaleString()} five-star Google reviews and 25,000+ successful moves.
+                Since {COMPANY.founded}, we've built our reputation one move at a time, with over {COMPANY.googleReviewCount.toLocaleString()} Google reviews (4.8-star average) and 25,000+ successful moves.
               </p>
 
               {/* Two-column checklist */}
