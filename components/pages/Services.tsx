@@ -3,7 +3,8 @@
 // ON THE GO MOVING — Services Overview Page (/services/)
 // Design: Mirrors the We Are Local hub layout — forest green hero, card grid
 // SEO: Hub page for all 9 service pages — internal linking hub-and-spoke
-// Schema: ItemList of all service pages for LLM/AEO discoverability
+// Schema: CollectionPage + ItemList of Services + BreadcrumbList, rendered
+//         server-side in app/(main)/services/page.tsx
 // ==========================================================================
 
 import { useEffect } from "react";
@@ -11,6 +12,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { COMPANY } from "@/lib/siteData";
 import { BRAND_IMAGES } from "@/lib/brandImages";
+import { SERVICES_CATALOG } from "@/lib/servicesCatalog";
 import {
   ArrowRight, Shield, Clock, CheckCircle, Star,
   Home as HomeIcon, Building2, Package, Archive,
@@ -19,182 +21,29 @@ import {
 } from "lucide-react";
 
 // Full service data with descriptions, images, and icons
-const ALL_SERVICES = [
-  {
-    title: "Residential Moving",
-    href: "/residential-moving/",
-    icon: HomeIcon,
-    popular: true,
-    description:
-      "Full-service home moves handled with care. From studio apartments to large family homes, our crews treat your belongings like their own.",
-    image: BRAND_IMAGES.residentialMoving,
-    cta: "Get a Residential Quote",
-  },
-  {
-    title: "Commercial Moving",
-    href: "/commercial-moving/",
-    icon: Building2,
-    popular: true,
-    description:
-      "Minimize downtime with efficient office and commercial relocation. We work around your schedule, evenings and weekends available.",
-    image: BRAND_IMAGES.commercialFleet,
-    cta: "Get a Commercial Quote",
-  },
-  {
-    title: "Storage Services",
-    href: "/storage-services/",
-    icon: Archive,
-    popular: true,
-    description:
-      "Secure vaulted storage at our Redmond, WA facility. Dedicated vaults managed by our team, not a self-serve unit. Contact us for current pricing.",
-    image: BRAND_IMAGES.storageForklift,
-    cta: "Learn About Storage",
-  },
-  {
-    title: "Apartment Moving",
-    href: "/apartment-moving/",
-    icon: HomeIcon,
-    popular: false,
-    description:
-      "Studio to multi-bedroom apartment moves. We know Seattle and Eastside buildings, elevator reservations, COI requirements, and tight hallways are no problem.",
-    image: BRAND_IMAGES.crewEntryway1,
-    cta: "Get an Apartment Quote",
-  },
-  {
-    title: "Senior Moving",
-    href: "/senior-moving/",
-    icon: Users,
-    popular: false,
-    description:
-      "Patient, careful service for seniors and families. We take the time to do it right, downsizing, assisted living transitions, and estate moves handled with respect.",
-    image: BRAND_IMAGES.customerHandshake,
-    cta: "Learn About Senior Moves",
-  },
-  {
-    title: "Staging Professionals",
-    href: "/staging-professionals/",
-    icon: Layers,
-    popular: false,
-    description:
-      "Moving and storage services tailored for home stagers. Fast turnaround, flexible scheduling, and secure vault storage between staging projects.",
-    image: BRAND_IMAGES.teamFleet,
-    cta: "Learn About Staging Services",
-  },
-  {
-    title: "Packing Services",
-    href: "/packing-services/",
-    icon: Package,
-    popular: false,
-    description:
-      "Professional packing using quality materials, all supplies included. Full-pack, partial-pack, or fragile-only options available.",
-    image: BRAND_IMAGES.packingCrew,
-    cta: "Learn About Packing",
-  },
-  {
-    title: "Labor Only Moving",
-    href: "/labor-only-moving/",
-    icon: Dumbbell,
-    popular: false,
-    description:
-      "Need professional loading or unloading help? Our crews bring the same care and equipment as a full-service move, ask us about upgrading to a full-service truck for a small hourly increase.",
-    image: BRAND_IMAGES.laborOnlyCrew,
-    cta: "Learn About Labor Only",
-  },
-  {
-    title: "Furniture Moving",
-    href: "/furniture-moving/",
-    icon: Sofa,
-    popular: false,
-    description:
-      "Careful handling of sofas, dining sets, bedroom furniture, and antiques. Our crews use blankets, shrink wrap, and proper lifting techniques to protect every piece.",
-    image: BRAND_IMAGES.crewWrappingFurniture,
-    cta: "Learn About Furniture Moving",
-  },
-  {
-    title: "Condo Moving",
-    href: "/condo-moving/",
-    icon: Building,
-    popular: false,
-    description:
-      "High-rise and mid-rise condo moves with COI documentation, elevator reservations, and loading dock coordination handled for you.",
-    image: BRAND_IMAGES.crewEntryway3,
-    cta: "Learn About Condo Moving",
-  },
-  {
-    title: "Appliance Moving",
-    href: "/appliance-moving/",
-    icon: Wrench,
-    popular: false,
-    description:
-      "Safe transport of washers, dryers, refrigerators, and other heavy appliances. We use dollies and protective gear to prevent damage to floors and walls.",
-    image: BRAND_IMAGES.crewCarryingFurniture,
-    cta: "Learn About Appliance Moving",
-  },
-  {
-    title: "Unpacking Services",
-    href: "/unpacking-services/",
-    icon: Inbox,
-    popular: false,
-    description:
-      "Let our crew unpack and organize your new home. We remove all packing materials and help you settle in faster \u2014 available same-day or next-day after your move.",
-    image: BRAND_IMAGES.crewEntryway1,
-    cta: "Learn About Unpacking",
-  },
-  {
-    title: "Warehousing & Distribution",
-    href: "/warehousing-distribution/",
-    icon: Warehouse,
-    popular: false,
-    description:
-      "Short and long-term warehousing at our Redmond facility. Ideal for businesses needing inventory storage, staging, or distribution support in the Greater Seattle area.",
-    image: BRAND_IMAGES.storageWarehouse,
-    cta: "Learn About Warehousing",
-  },
-  {
-    title: "Office Moving",
-    href: "/office-moving/",
-    icon: Monitor,
-    popular: false,
-    description:
-      "Complete office relocation services \u2014 desks, workstations, server equipment, and filing systems moved efficiently to minimize business disruption.",
-    image: BRAND_IMAGES.officeMoveAction,
-    cta: "Learn About Office Moving",
-  },
-  {
-    title: "Corporate Relocation",
-    href: "/corporate-relocation/",
-    icon: Handshake,
-    popular: false,
-    description:
-      "End-to-end relocation management for businesses moving employees or entire departments. Coordinated logistics, flexible scheduling, and dedicated project management.",
-    image: BRAND_IMAGES.crewCustomerCommercial,
-    cta: "Learn About Corporate Relocation",
-  },
-  {
-    title: "Freight Forwarding",
-    href: "/freight-forwarding-service/",
-    icon: Truck,
-    popular: false,
-    description:
-      "Reliable freight pickup, transport, and delivery for businesses and individuals. Our branded fleet handles oversized loads and time-sensitive freight across the Pacific Northwest.",
-    image: BRAND_IMAGES.brandedTruck,
-    cta: "Learn About Freight Forwarding",
-  },
-];
-
-const SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "On The Go Moving & Storage, Moving Services",
-  description: "All moving and storage services offered by On The Go Moving & Storage in Greater Seattle, WA",
-  numberOfItems: ALL_SERVICES.length,
-  itemListElement: ALL_SERVICES.map((svc, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: svc.title,
-    url: `https://onthegomoving.com${svc.href}`,
-  })),
+// UI-only extras, keyed by href. Titles, hrefs and descriptions come from
+// lib/servicesCatalog.ts so the page copy and the JSON-LD never drift apart.
+const SERVICE_UI: Record<string, { icon: typeof HomeIcon; popular: boolean; image: string; cta: string }> = {
+  "/residential-moving/": { icon: HomeIcon, popular: true, image: BRAND_IMAGES.residentialMoving, cta: "Get a Residential Quote" },
+  "/commercial-moving/": { icon: Building2, popular: true, image: BRAND_IMAGES.commercialFleet, cta: "Get a Commercial Quote" },
+  "/storage-services/": { icon: Archive, popular: true, image: BRAND_IMAGES.storageForklift, cta: "Learn About Storage" },
+  "/apartment-moving/": { icon: HomeIcon, popular: false, image: BRAND_IMAGES.crewEntryway1, cta: "Get an Apartment Quote" },
+  "/senior-moving/": { icon: Users, popular: false, image: BRAND_IMAGES.customerHandshake, cta: "Learn About Senior Moves" },
+  "/staging-professionals/": { icon: Layers, popular: false, image: BRAND_IMAGES.teamFleet, cta: "Learn About Staging Services" },
+  "/packing-services/": { icon: Package, popular: false, image: BRAND_IMAGES.packingCrew, cta: "Learn About Packing" },
+  "/labor-only-moving/": { icon: Dumbbell, popular: false, image: BRAND_IMAGES.laborOnlyCrew, cta: "Learn About Labor Only" },
+  "/furniture-moving/": { icon: Sofa, popular: false, image: BRAND_IMAGES.crewWrappingFurniture, cta: "Learn About Furniture Moving" },
+  "/condo-moving/": { icon: Building, popular: false, image: BRAND_IMAGES.crewEntryway3, cta: "Learn About Condo Moving" },
+  "/appliance-moving/": { icon: Wrench, popular: false, image: BRAND_IMAGES.crewCarryingFurniture, cta: "Learn About Appliance Moving" },
+  "/unpacking-services/": { icon: Inbox, popular: false, image: BRAND_IMAGES.crewEntryway1, cta: "Learn About Unpacking" },
+  "/warehousing-distribution/": { icon: Warehouse, popular: false, image: BRAND_IMAGES.storageWarehouse, cta: "Learn About Warehousing" },
+  "/office-moving/": { icon: Monitor, popular: false, image: BRAND_IMAGES.officeMoveAction, cta: "Learn About Office Moving" },
+  "/corporate-relocation/": { icon: Handshake, popular: false, image: BRAND_IMAGES.crewCustomerCommercial, cta: "Learn About Corporate Relocation" },
+  "/freight-forwarding-service/": { icon: Truck, popular: false, image: BRAND_IMAGES.brandedTruck, cta: "Learn About Freight Forwarding" },
 };
+
+const ALL_SERVICES = SERVICES_CATALOG.map((svc) => ({ ...svc, ...SERVICE_UI[svc.href] }));
+
 
 export default function Services() {
   useEffect(() => {
@@ -209,15 +58,7 @@ export default function Services() {
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
     canonical.href = "https://onthegomoving.com/services/";
-
-    const schemaId = "services-schema";
-    document.getElementById(schemaId)?.remove();
-    const script = document.createElement("script");
-    script.id = schemaId;
-    script.type = "application/ld+json";
-    script.text = JSON.stringify(SCHEMA);
-    document.head.appendChild(script);
-    return () => { document.getElementById(schemaId)?.remove(); };
+    // JSON-LD is rendered server-side in app/(main)/services/page.tsx.
   }, []);
 
   return (

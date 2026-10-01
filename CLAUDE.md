@@ -128,6 +128,7 @@ The site uses Next.js App Router with a `(main)` route group for all public page
 - **`lib/schema.ts` is the single source of truth for business entities.** Organization (`/#organization`), HQ LocalBusiness (`/#local-business`) and WebSite (`/#website`) render server-side on every page from `app/layout.tsx`. `MOVING_COMPANY_SCHEMA` is the same object as the HQ LocalBusiness.
 - **Never add an unidentified `MovingCompany`/`LocalBusiness` block.** Reference the business by `@id` instead (`LOCAL_BUSINESS_REF`, `ORGANIZATION_REF`), e.g. as a Service `provider` or Person `worksFor`.
 - The only other LocalBusiness entities are the verified secondary GBP locations (Seattle, Bellevue), built by `buildLocationBusinessSchema()` with their own `@id` (`/{city}-movers/#local-business`), their own GBP review count, and `parentOrganization`. All other city pages emit a `Service` whose provider is the HQ entity.
+- **Core services live in `lib/servicesCatalog.ts`.** It drives the `/services/` cards, the `/services/` JSON-LD (CollectionPage + ItemList of Services + BreadcrumbList, server-side), and the HQ `hasOfferCatalog`. Each service page's Service entity uses `@id` `/{service-slug}/#service` (`serviceId()` in `lib/schema.ts`). Add new service pages to the catalog.
 - Homepage adds a `WebPage` (`/#webpage`) linked to the WebSite, Organization and LocalBusiness. No `SearchAction`: the site has no search endpoint.
 
 ### Canonical tags

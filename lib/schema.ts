@@ -16,6 +16,7 @@
 
 import { BRAND_IMAGES } from "@/lib/brandImages";
 import type { LocationData } from "@/lib/locationData";
+import { SERVICES_CATALOG } from "@/lib/servicesCatalog";
 
 export const SITE_URL = "https://onthegomoving.com";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
@@ -24,6 +25,18 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export const ORGANIZATION_REF = { "@id": ORGANIZATION_ID };
 export const LOCAL_BUSINESS_REF = { "@id": LOCAL_BUSINESS_ID };
+
+/** Stable @id for a service page's Service entity, e.g. /condo-moving/#service */
+export function serviceId(href: string): string {
+  return `${SITE_URL}${href}#service`;
+}
+
+/** Service area used on every core Service entity (~18 mi around Redmond HQ). */
+export const SERVICE_AREA = {
+  "@type": "GeoCircle",
+  geoMidpoint: { "@type": "GeoCoordinates", latitude: 47.674, longitude: -122.1215 },
+  geoRadius: "29000",
+};
 
 export const DEFAULT_SCHEMA_IMAGE =
   "https://onthegomoving.com/wp-content/uploads/2021/01/on-the-go-moving-storage-truck.jpg";
@@ -117,14 +130,16 @@ export const LOCAL_BUSINESS_SCHEMA = {
     "Snoqualmie, WA", "North Bend, WA", "Duvall, WA", "Carnation, WA",
     "Fall City, WA", "Maple Valley, WA", "Covington, WA",
   ],
+  // Every core service page, linked to its own Service entity by @id.
+  // "Long Distance Moving" has no dedicated page, so it stays a plain name.
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Moving Services",
+    name: "Moving & Storage Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Residential Moving" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Moving" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Packing Services" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Storage Services" } },
+      ...SERVICES_CATALOG.map((svc) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", "@id": serviceId(svc.href), name: svc.title },
+      })),
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Long Distance Moving" } },
     ],
   },
@@ -207,5 +222,19 @@ export function buildLocationBusinessSchema(data: LocationData | undefined) {
     openingHoursSpecification: OPENING_HOURS,
     sameAs: [...SOCIAL_PROFILES, SECONDARY_LOCATION_GBP[data.slug]],
     parentOrganization: ORGANIZATION_REF,
+  };
+}
+
+/** Full Service entity for a core service, as listed on /services/. */
+export function buildServiceEntity(svc: { title: string; href: string; description: string }) {
+  return {
+    "@type": "Service",
+    "@id": serviceId(svc.href),
+    name: svc.title,
+    serviceType: svc.title,
+    description: svc.description,
+    url: `${SITE_URL}${svc.href}`,
+    provider: LOCAL_BUSINESS_REF,
+    areaServed: SERVICE_AREA,
   };
 }

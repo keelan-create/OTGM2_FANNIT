@@ -19,7 +19,7 @@ import {
   Home, Building2, Users, Package, Truck, DollarSign,
   Award, Zap, MapPin, ChevronDown, ChevronUp,
 } from "lucide-react";
-import { LOCAL_BUSINESS_REF } from "@/lib/schema";
+import { LOCAL_BUSINESS_REF, SERVICE_AREA } from "@/lib/schema";
 
 // ---------------------------------------------------------------------------
 // Service data — one entry per slug
@@ -897,10 +897,12 @@ export default function ServicePage({ slug }: ServicePageProps) {
       {
         "@context": "https://schema.org",
         "@type": "Service",
+        "@id": `${data.canonical}#service`,
+        url: data.canonical,
         name: data.title,
         description: data.metaDesc,
         provider: LOCAL_BUSINESS_REF,
-        areaServed: { "@type": "GeoCircle", geoMidpoint: { "@type": "GeoCoordinates", latitude: 47.6740, longitude: -122.1215 }, geoRadius: "29000" },
+        areaServed: SERVICE_AREA,
       },
       {
         "@context": "https://schema.org",
