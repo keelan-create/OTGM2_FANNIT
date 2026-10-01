@@ -26,7 +26,7 @@
 | Build command | `pnpm build` |
 | Output directory | `out/` |
 | Hosting | Netlify — auto-deploys from GitHub `main` branch |
-| GitHub repo | `keelan-create/otgm2_fannit` (live, confirmed Oct 2026; previously `kenei631-cmd/onthegomoving-nextjs`) |
+| GitHub repo (live) | `FANNIT-Digital-Marketing-Agency/onthegomoving-nextjs`, branch `main`. Verified in Netlify on 2026-10-01. `keelan-create/otgm2_fannit` is NOT what Netlify deploys. |
 | Netlify site name | `on-the-go-moving` |
 | Netlify site ID | `0aef4e19-01b8-4839-9be2-56d3076831a6` |
 | CRM | Supermove (via Netlify Functions) |
