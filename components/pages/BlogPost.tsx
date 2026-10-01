@@ -491,7 +491,7 @@ export default function BlogPost({ slug: slugProp }: { slug?: string }) {
                       {post.faqs.map((faq, i) => (
                         <div key={i} className="border border-gray-100 rounded-xl p-5 bg-[#fafafa]">
                           <h3 className="font-bold text-gray-900 mb-2 text-base">{faq.q}</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+                          <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">{faq.a}</p>
                         </div>
                       ))}
                     </div>
