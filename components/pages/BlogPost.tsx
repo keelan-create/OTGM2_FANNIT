@@ -196,15 +196,12 @@ export default function BlogPost({ slug: slugProp }: { slug?: string }) {
         "name": "Jason Sexton",
         "url": "https://onthegomoving.com/jason-sexton/",
         "jobTitle": "Founder & Owner",
-        "worksFor": {
-          "@type": "LocalBusiness",
-          "name": "On The Go Moving & Storage",
-          "url": "https://onthegomoving.com",
-        },
+        "worksFor": { "@id": "https://onthegomoving.com/#organization" },
         "image": "https://onthegomoving.com/assets/jason-sexton-headshot.jpg",
       },
       "publisher": {
         "@type": "Organization",
+        "@id": "https://onthegomoving.com/#organization",
         "name": "On The Go Moving & Storage",
         "url": "https://onthegomoving.com",
         "logo": {
@@ -494,7 +491,7 @@ export default function BlogPost({ slug: slugProp }: { slug?: string }) {
                       {post.faqs.map((faq, i) => (
                         <div key={i} className="border border-gray-100 rounded-xl p-5 bg-[#fafafa]">
                           <h3 className="font-bold text-gray-900 mb-2 text-base">{faq.q}</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+                          <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">{faq.a}</p>
                         </div>
                       ))}
                     </div>

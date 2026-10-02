@@ -14,7 +14,7 @@ import QuoteForm from "@/components/QuoteForm";
 import { COMPANY } from "@/lib/siteData";
 import { CheckCircle, ArrowRight, Phone, Star, AlertCircle, TrendingDown, TrendingUp, Clock } from "lucide-react";
 import { BRAND_IMAGES } from "@/lib/brandImages";
-import { useSEO, MOVING_COMPANY_SCHEMA, buildFAQSchema } from "@/hooks/useSEO";
+import { useSEO, MOVING_COMPANY_SCHEMA } from "@/hooks/useSEO";
 
 const PRICING_TABLE = [
   { size: "Studio / 1-Bedroom", crew: "2 movers", hours: "2–4 hrs", range: "$300–$600", notes: "Minimal furniture, no stairs" },
@@ -59,8 +59,8 @@ const FAQS = [
     a: "In Seattle and the Eastside, most local moves cost between $300 and $1,600 depending on home size, crew size, and move duration. A studio or 1-bedroom typically runs $300–$600 with a 2-person crew. A 2–3 bedroom home averages $600–$1,200 with a 3-person crew. On The Go Moving charges by the hour with no hidden fees.",
   },
   {
-    q: "How much do movers charge per hour?",
-    a: "On The Go Moving charges by the hour based on crew size. All rates include the moving truck, fuel, basic equipment, and standard valuation coverage. Call us or request a free quote for current rates, pricing varies by season, availability, and move details.",
+    q: "How much do movers charge per hour in Seattle?",
+    a: "Most Seattle movers charge between $100 and $250 per hour. The biggest factor is crew size. A 2-person crew with a truck usually runs about $100 to $180 per hour. A 3-person crew usually runs about $150 to $250 per hour. Rates tend to be higher in summer, on weekends, and at the end of the month, when demand peaks. Seattle traffic, tight parking, and elevator reservations in apartment and condo buildings can also add time to your move.\n\nThe hourly rate is only part of the price. Ask every mover what is included. Some companies add travel time fees, fuel surcharges, or charges for blankets, shrink wrap, and packing supplies. Many also have a minimum of 2 to 3 hours. Pianos, safes, and large appliances may cost extra too. These add-ons are how a cheap-looking hourly rate turns into a big bill on moving day.\n\nOn The Go Moving & Storage charges by the hour based on crew size. Our rates include the truck, fuel, moving blankets and pads, dollies, and standard valuation coverage. We are licensed (WA HG-064180) and insured. Rates vary by season, availability, and the details of your move, so call us or request a free quote for an exact price.",
   },
   {
     q: "Is it cheaper to move yourself or hire movers?",
@@ -81,6 +81,10 @@ const FAQS = [
   {
     q: "How much does it cost to move a 2-bedroom apartment?",
     a: "Moving a 2-bedroom apartment in Seattle or the Eastside typically costs $450–$900 with On The Go Moving. We recommend a 3-person crew for most 1–2 bedroom apartments because the extra mover reduces total hours and often results in a lower final bill than a 2-person crew.",
+  },
+  {
+    q: "How much does it cost to move a 3,000 sq ft house?",
+    a: "A 3,000 square foot house is usually a 4-bedroom home or larger. For a local move in the Seattle area, On The Go Moving typically sends 4 to 5 movers and 1 or 2 trucks. Most moves this size take 8 to 12 hours and cost about $1,200 to $2,200 or more. Your final price depends on how much you own, how ready you are on moving day, and the access at both homes.\n\nA few things push the cost up on bigger homes. Stairs, long walks from the door to the truck, and tight parking add time. So do pianos, safes, and other heavy items. Packing services and storage between homes are extra. A garage, shop, or basement full of loose items can add hours on its own.\n\nYou can bring the cost down. Declutter before the move so you are not paying to move things you will not keep. Pack and label boxes by room before the crew arrives. Take apart beds and tables yourself if you can. Book 4 or more weeks ahead and pick a weekday in the middle of the month when you can.\n\nOur hourly rate includes the truck, fuel, blankets and pads, dollies, and standard valuation coverage. There is no flat stair fee and no fuel surcharge. For a home this size, request a free quote and we will build an estimate around your actual inventory.",
   },
   {
     q: "Do you offer storage with a move?",
@@ -115,10 +119,8 @@ export default function HowMuchDoMoversCost() {
     description: "How much do movers cost in Seattle? See typical cost ranges by home size, what affects your price, and cost-saving tips from On The Go Moving.",
     canonical: "https://onthegomoving.com/how-much-do-movers-cost/",
     ogType: "article",
-    schema: [
-      MOVING_COMPANY_SCHEMA,
-      buildFAQSchema(FAQS.map((f) => ({ question: f.q, answer: f.a }))),
-    ],
+    // FAQPage is rendered once, inline next to the visible FAQ (static HTML).
+    schema: [MOVING_COMPANY_SCHEMA],
   });
 
   return (

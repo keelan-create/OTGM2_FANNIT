@@ -30,6 +30,7 @@ import QuoteForm from "@/components/QuoteForm";
 import { BRAND_IMAGES } from "@/lib/brandImages";
 import { COMPANY } from "@/lib/siteData";
 import { LOCATION_DATA } from "@/lib/locationData";
+import { buildLocationBusinessSchema } from "@/lib/schema";
 import { TIER_A_CONTENT } from "@/lib/tierAContent";
 
 // ---------------------------------------------------------------------------
@@ -627,24 +628,17 @@ export default function CityServiceSubPage({ citySlug, serviceKey }: CityService
     script.id = schemaId;
     script.type = "application/ld+json";
     script.text = JSON.stringify([
+      // Provider is the Seattle/Bellevue GBP location entity where one exists,
+      // otherwise the HQ LocalBusiness by @id. No unidentified business blocks.
       {
         "@context": "https://schema.org",
-        "@type": ["MovingCompany", "LocalBusiness"],
-        name: COMPANY.name,
+        "@type": "Service",
+        "@id": `https://onthegomoving.com/${cityMoverSlug}/${serviceKey}/#service`,
+        name: `${serviceDef.label} in ${city}, WA`,
+        serviceType: serviceDef.label,
         url: `https://onthegomoving.com/${cityMoverSlug}/${serviceKey}/`,
-        telephone: cityData?.gbp?.telephone ?? COMPANY.phone,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: cityData?.gbp?.streetAddress ?? "16625 Redmond Way #M365",
-          addressLocality: cityData?.gbp?.addressLocality ?? "Redmond",
-          addressRegion: "WA",
-          postalCode: cityData?.gbp?.postalCode ?? "98052",
-          addressCountry: "US",
-        },
+        provider: buildLocationBusinessSchema(cityData),
         areaServed: { "@type": "City", name: city, containedInPlace: { "@type": "State", name: "Washington" } },
-        aggregateRating: { "@type": "AggregateRating", ratingValue: cityData?.gbp?.ratingValue ?? "4.8", reviewCount: cityData?.gbp?.reviewCount ?? "393", bestRating: "5" },
-        priceRange: "$$",
-        openingHours: ["Mo-Su 00:00-00:00"],
       },
       {
         "@context": "https://schema.org",

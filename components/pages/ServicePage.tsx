@@ -19,6 +19,7 @@ import {
   Home, Building2, Users, Package, Truck, DollarSign,
   Award, Zap, MapPin, ChevronDown, ChevronUp,
 } from "lucide-react";
+import { LOCAL_BUSINESS_REF, SERVICE_AREA } from "@/lib/schema";
 
 // ---------------------------------------------------------------------------
 // Service data — one entry per slug
@@ -896,16 +897,12 @@ export default function ServicePage({ slug }: ServicePageProps) {
       {
         "@context": "https://schema.org",
         "@type": "Service",
+        "@id": `${data.canonical}#service`,
+        url: data.canonical,
         name: data.title,
         description: data.metaDesc,
-        provider: {
-          "@type": "MovingCompany",
-          name: "On The Go Moving & Storage",
-          telephone: "+14257618500",
-          address: { "@type": "PostalAddress", addressLocality: "Redmond", addressRegion: "WA", postalCode: "98052", addressCountry: "US" },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "393" },
-        },
-        areaServed: { "@type": "GeoCircle", geoMidpoint: { "@type": "GeoCoordinates", latitude: 47.6740, longitude: -122.1215 }, geoRadius: "29000" },
+        provider: LOCAL_BUSINESS_REF,
+        areaServed: SERVICE_AREA,
       },
       {
         "@context": "https://schema.org",

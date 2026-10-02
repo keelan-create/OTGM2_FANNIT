@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 import { COMPANY } from "@/lib/siteData";
 import { Phone, ArrowRight, CheckCircle, Star, Award, Users, Heart, Shield, Zap } from "lucide-react";
 import { BRAND_IMAGES } from "@/lib/brandImages";
-import { useSEO, MOVING_COMPANY_SCHEMA } from "@/hooks/useSEO";
+import { useSEO } from "@/hooks/useSEO";
 
 const TIMELINE = [
   { year: "2009", event: "Founded in Redmond, WA with one truck and a two-person crew." },
@@ -18,7 +18,7 @@ const TIMELINE = [
   { year: "2015", event: "Surpassed 5,000 successful moves. Earned Angie's List Super Service Award." },
   { year: "2018", event: "Launched commercial moving division to serve Eastside businesses and tech campuses." },
   { year: "2021", event: "Reached 1,000 Google reviews with a 4.8-star average. Expanded to 12 trucks." },
-  { year: "2024", event: "Over 25,000 moves completed. 393 five-star Google reviews and counting." },
+  { year: "2024", event: "Over 25,000 moves completed. 393 Google reviews with a 4.8-star average." },
 ];
 
 const TEAM_QUALITIES = [
@@ -65,46 +65,11 @@ const FAQS = [
 export default function AboutUs() {
   useSEO({
     title: "Seattle Moving Company Since 2009 | On The Go Moving",
-    description: "On The Go Moving & Storage, Seattle's trusted movers since 2009. 25,000+ moves, 393 five-star reviews, licensed & insured in WA. Meet our team.",
+    description: "On The Go Moving & Storage, Seattle's trusted movers since 2009. 25,000+ moves, 4.8 stars across 393 Google reviews, licensed & insured in WA. Meet our team.",
     canonical: "https://onthegomoving.com/about-us/",
     ogType: "website",
-    schema: [
-      MOVING_COMPANY_SCHEMA,
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "On The Go Moving & Storage",
-        url: "https://onthegomoving.com",
-        logo: "https://onthegomoving.com/wp-content/uploads/2021/01/on-the-go-moving-logo.png",
-        foundingDate: "2009",
-        founder: { "@type": "Person", "@id": "https://onthegomoving.com/jason-sexton/#person", name: "Jason Sexton", url: "https://onthegomoving.com/jason-sexton/" },
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "16625 Redmond Way #M365",
-          addressLocality: "Redmond",
-          addressRegion: "WA",
-          postalCode: "98052",
-          addressCountry: "US",
-        },
-        telephone: "+14257618500",
-        email: "booking@onthegomoving.com",
-        sameAs: [
-          "https://www.facebook.com/onthegomoving",
-          "https://www.instagram.com/onthegomoving",
-          "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-        ],
-        numberOfEmployees: { "@type": "QuantitativeValue", value: 30 },
-        description: "On The Go Moving & Storage is a licensed and insured moving company serving Seattle, Bellevue, Redmond, and the Greater Eastside since 2009. Over 25,000 moves completed.",
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://onthegomoving.com/" },
-          { "@type": "ListItem", position: 2, name: "About Us", item: "https://onthegomoving.com/about-us/" },
-        ],
-      },
-    ],
+    // JSON-LD (AboutPage, Person, BreadcrumbList) is rendered server-side in
+    // app/(main)/about-us/page.tsx. Organization/LocalBusiness come from app/layout.tsx.
   });
 
   return (
@@ -161,7 +126,7 @@ export default function AboutUs() {
                   We are not a franchise, a broker, or a national chain. Every mover on every job is a direct employee of On The Go Moving, background-checked, professionally trained, and uniformed. We own our trucks and operate our own storage facility in Redmond, which means we control the quality of every move from start to finish.
                 </p>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  With over {COMPANY.googleReviewCount.toLocaleString()} five-star Google reviews and more than 25,000 successful moves, we are proud to be the moving company the Eastside trusts most.
+                  With over {COMPANY.googleReviewCount.toLocaleString()} Google reviews (4.8-star average) and more than 25,000 successful moves, we are proud to be the moving company the Eastside trusts most.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <a href="/contact-us/" className="btn-primary">Get a Free Quote <ArrowRight size={16} /></a>

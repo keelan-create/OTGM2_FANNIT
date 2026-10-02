@@ -32,7 +32,7 @@ const COMPANIES = [
       "Based in Redmond, travel time applies for far West Seattle moves",
       "Online booking fills up fast in summer peak season",
     ],
-    description: `On The Go Moving & Storage has been serving the greater Seattle area since 2009 and has built one of the strongest reputations in the market, 393 five-star Google reviews, a 4.8-star average, and 25,000+ completed moves. What sets them apart for price shoppers is their fully transparent hourly pricing: you pay for the time the crew works, with no fuel surcharges, no stair fees, and no hidden add-ons. Every move includes Their crews are W-2 employees trained in-house, not gig workers pulled from a labor app, which is reflected in the consistency of their reviews. For most Seattle moves, On The Go is the best combination of price, reliability, and coverage.`,
+    description: `On The Go Moving & Storage has been serving the greater Seattle area since 2009 and has built one of the strongest reputations in the market, 393 Google reviews, a 4.8-star average, and 25,000+ completed moves. What sets them apart for price shoppers is their fully transparent hourly pricing: you pay for the time the crew works, with no fuel surcharges, no stair fees, and no hidden add-ons. Every move includes Their crews are W-2 employees trained in-house, not gig workers pulled from a labor app, which is reflected in the consistency of their reviews. For most Seattle moves, On The Go is the best combination of price, reliability, and coverage.`,
     internalLinks: [
       { label: "Seattle Movers", href: "/" },
       { label: "Seattle Apartment Moving", href: "/seattle-apartment-moving/" },

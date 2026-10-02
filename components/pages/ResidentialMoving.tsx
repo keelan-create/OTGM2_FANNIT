@@ -16,6 +16,7 @@ import {
   Home, Building2, Users, ChevronDown, ChevronUp, MapPin,
   Package, Truck, DollarSign, Award, Zap
 } from "lucide-react";
+import { LOCAL_BUSINESS_REF, SERVICE_AREA, serviceId } from "@/lib/schema";
 
 const FAQS = [
   {
@@ -200,16 +201,12 @@ export default function ResidentialMoving() {
       {
         "@context": "https://schema.org",
         "@type": "Service",
+        "@id": serviceId("/residential-moving/"),
+        url: "https://onthegomoving.com/residential-moving/",
         name: "Residential Moving Services",
         description: "Professional residential moving services for homes, apartments, and condos in Seattle, Bellevue, Redmond, and the Greater Seattle Eastside.",
-        provider: {
-          "@type": "MovingCompany",
-          name: "On The Go Moving & Storage",
-          telephone: "+14257618500",
-          address: { "@type": "PostalAddress", addressLocality: "Redmond", addressRegion: "WA", postalCode: "98052", addressCountry: "US" },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "393" },
-        },
-        areaServed: { "@type": "GeoCircle", geoMidpoint: { "@type": "GeoCoordinates", latitude: 47.6740, longitude: -122.1215 }, geoRadius: "29000" },
+        provider: LOCAL_BUSINESS_REF,
+        areaServed: SERVICE_AREA,
         offers: { "@type": "Offer", priceSpecification: { "@type": "UnitPriceSpecification", price: "100", priceCurrency: "USD", unitText: "per hour" } },
       },
       {
