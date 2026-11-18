@@ -6,7 +6,7 @@
 // Internal linking: All 26 location pages linked in footer for full link equity
 // ==========================================================================
 
-import { COMPANY, NAV_SERVICES, ALL_LOCATIONS } from "@/lib/siteData";
+import { COMPANY, NAV_SERVICES, ALL_LOCATIONS, SOCIAL_PROFILES } from "@/lib/siteData";
 import { Phone, Mail, MapPin, Star } from "lucide-react";
 import { BRAND_IMAGES } from "@/lib/brandImages";
 
@@ -61,6 +61,22 @@ export default function Footer() {
               </div>
               <span className="text-sm font-bold text-white">{COMPANY.googleRating}</span>
               <span className="text-white/60 text-xs">({COMPANY.googleReviewCount.toLocaleString()} reviews)</span>
+            </div>
+
+            {/* Social profiles: must match schema sameAs (SOCIAL_PROFILES in lib/siteData.ts) */}
+            <div className="footer-social mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+              {SOCIAL_PROFILES.map((p) => (
+                <a
+                  key={p.href}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={`${COMPANY.name} on ${p.label}`}
+                  className="text-white/75 hover:text-[#75aa11] text-sm font-semibold transition-colors"
+                >
+                  {p.label}
+                </a>
+              ))}
             </div>
           </div>
 

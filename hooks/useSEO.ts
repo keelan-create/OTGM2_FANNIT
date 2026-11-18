@@ -7,6 +7,7 @@
 
 import { useEffect } from "react";
 import { BRAND_IMAGES } from "@/lib/brandImages";
+import { SOCIAL_SAME_AS } from "@/lib/siteData";
 
 // Default OG image — brand truck livery used as fallback for all pages
 export const DEFAULT_OG_IMAGE =
@@ -150,12 +151,7 @@ export const MOVING_COMPANY_SCHEMA = {
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Sunday"], opens: "07:00", closes: "19:00" },
   ],
   description: "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 393 Google reviews.",
-  sameAs: [
-    "https://www.facebook.com/onthegomoving",
-    "https://www.instagram.com/onthegomoving",
-    "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-    "https://share.google/wz8Px2cowaHkprOAM",
-  ],
+  sameAs: SOCIAL_SAME_AS,
   areaServed: [
     "Seattle, WA", "Bellevue, WA", "Redmond, WA", "Kirkland, WA",
     "Issaquah, WA", "Bothell, WA", "Renton, WA", "Shoreline, WA",

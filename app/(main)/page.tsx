@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HomePageContent from "@/components/pages/Home";
+import { SOCIAL_SAME_AS } from "@/lib/siteData";
 
 export const metadata: Metadata = {
   title: {
@@ -71,11 +72,7 @@ const localBusinessSchema = {
       closes: "19:00",
     },
   ],
-  sameAs: [
-    "https://www.facebook.com/onthegomoving",
-    "https://www.instagram.com/onthegomoving",
-    "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-  ],
+  sameAs: SOCIAL_SAME_AS,
   areaServed: [
     "Seattle, WA", "Bellevue, WA", "Redmond, WA", "Kirkland, WA",
     "Issaquah, WA", "Bothell, WA", "Renton, WA", "Shoreline, WA",

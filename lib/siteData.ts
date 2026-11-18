@@ -20,6 +20,18 @@ export const COMPANY = {
   heroTagline: "Moving Made Easy in the Pacific Northwest",
 };
 
+// Official social / directory profiles. Single source of truth for schema
+// `sameAs` and the visible footer links. Keep both in sync by editing here only.
+// Google link is the Redmond (HQ) Business Profile, by CID (share links can change).
+export const SOCIAL_PROFILES = [
+  { label: "Facebook", href: "https://www.facebook.com/people/On-the-Go-Moving-and-Storage/100041235176291/" },
+  { label: "Instagram", href: "https://www.instagram.com/onthegomovingwa/" },
+  { label: "Yelp", href: "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond-2" },
+  { label: "Google", href: "https://www.google.com/maps?cid=7269224613204294736" },
+] as const;
+
+export const SOCIAL_SAME_AS: string[] = SOCIAL_PROFILES.map((p) => p.href);
+
 export const NAV_SERVICES = [
   { label: "Residential Moving", href: "/residential-moving/" },
   { label: "Commercial Moving", href: "/commercial-moving/" },
