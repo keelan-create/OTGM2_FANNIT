@@ -7,7 +7,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { COMPANY } from "@/lib/siteData";
+import { COMPANY, SOCIAL_SAME_AS } from "@/lib/siteData";
 import { Phone, ArrowRight, CheckCircle, Star, Award, Users, Heart, Shield, Zap } from "lucide-react";
 import { BRAND_IMAGES } from "@/lib/brandImages";
 import { useSEO, MOVING_COMPANY_SCHEMA } from "@/hooks/useSEO";
@@ -88,11 +88,7 @@ export default function AboutUs() {
         },
         telephone: "+14257618500",
         email: "booking@onthegomoving.com",
-        sameAs: [
-          "https://www.facebook.com/onthegomoving",
-          "https://www.instagram.com/onthegomoving",
-          "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-        ],
+        sameAs: SOCIAL_SAME_AS,
         numberOfEmployees: { "@type": "QuantitativeValue", value: 30 },
         description: "On The Go Moving & Storage is a licensed and insured moving company serving Seattle, Bellevue, Redmond, and the Greater Eastside since 2009. Over 25,000 moves completed.",
       },

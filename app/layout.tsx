@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { BRAND_IMAGES } from "@/lib/brandImages";
+import { SOCIAL_SAME_AS } from "@/lib/siteData";
 
 // ── Server-side sitewide JSON-LD ──────────────────────────────────────────────
 // Rendered directly into the static HTML on every page so Googlebot sees the
@@ -30,12 +31,7 @@ const organizationSchema = {
   },
   telephone: "+14257618500",
   email: "booking@onthegomoving.com",
-  sameAs: [
-    "https://www.facebook.com/onthegomoving",
-    "https://www.instagram.com/onthegomoving",
-    "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-    "https://share.google/wz8Px2cowaHkprOAM",
-  ],
+  sameAs: SOCIAL_SAME_AS,
   description:
     "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 393 Google reviews.",
 };
@@ -78,12 +74,7 @@ const localBusinessSchema = {
   ],
   description:
     "On The Go Moving & Storage is Seattle's most trusted local moving company, serving Seattle, Bellevue, Redmond, Kirkland, and all Eastside suburbs since 2009. Licensed, insured, and rated 4.8 stars across 393 Google reviews.",
-  sameAs: [
-    "https://www.facebook.com/onthegomoving",
-    "https://www.instagram.com/onthegomoving",
-    "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-    "https://share.google/wz8Px2cowaHkprOAM",
-  ],
+  sameAs: SOCIAL_SAME_AS,
   areaServed: [
     "Seattle, WA", "Bellevue, WA", "Redmond, WA", "Kirkland, WA",
     "Issaquah, WA", "Bothell, WA", "Renton, WA", "Shoreline, WA",

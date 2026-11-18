@@ -14,7 +14,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import QuoteForm from "@/components/QuoteForm";
 import { BRAND_IMAGES } from "@/lib/brandImages";
-import { COMPANY } from "@/lib/siteData";
+import { COMPANY, SOCIAL_SAME_AS } from "@/lib/siteData";
 import { LOCATION_DATA, ALL_LOCATION_SLUGS } from "@/lib/locationData";
 import {
   CheckCircle,
@@ -165,10 +165,7 @@ export default function LocationPage({ slug }: LocationPageProps) {
         priceRange: "$$",
         openingHours: ["Mo-Su 00:00-00:00"],
         hasMap: `https://www.google.com/maps/search/On+The+Go+Moving+${encodeURIComponent(data.city)}+WA`,
-        sameAs: [
-          "https://www.facebook.com/onthegomoving",
-          "https://www.yelp.com/biz/on-the-go-moving-and-storage-redmond",
-        ],
+        sameAs: SOCIAL_SAME_AS,
         knowsAbout: [
           `Moving services in ${data.city}, WA`,
           "Residential moving",

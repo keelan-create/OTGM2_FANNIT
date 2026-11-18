@@ -177,10 +177,6 @@ export default function JasonSexton() {
             name: "USDOT Number 2120054",
           },
         ],
-        sameAs: [
-          "https://www.facebook.com/onthegomoving",
-          "https://www.instagram.com/onthegomoving",
-        ],
       },
       {
         "@context": "https://schema.org",
